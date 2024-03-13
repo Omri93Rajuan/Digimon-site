@@ -1,0 +1,9 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.bg-digimon {
+  background: url("https://github.com/Omri93Rajuan/Digimon_site/blob/master/assets/bgHeader.png?raw=true")
+    50% 50% no-repeat;
+    min-height: 150px;
+}
