@@ -17,8 +17,8 @@ const getData = async (id) => {
     }
     try {
       const data = await getAllData();
-      const newData = data.filter((item) => item.id === id);
-      if (!newData.length) {
+      const newData = data.filter((item) => item.id === id)[0]; // לקיחת הפריט הראשון בלבד
+      if (!newData) {
         throw new Error("Could not find this card in the database");
       }
       return Promise.resolve(newData);
@@ -40,7 +40,7 @@ const createData = async (newData) => {
 };
 const deleteData = async (id) => {
     try {
-        const currentData = await getData();
+        const currentData = await getAllData();
         const index = currentData.findIndex((item) => item.id === id);
         if (index === -1) {
             throw new Error("Could not find this card in the database");

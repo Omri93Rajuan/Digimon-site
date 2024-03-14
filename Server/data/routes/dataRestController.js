@@ -5,23 +5,23 @@ const { handleError } = require('../../utils/handleErrors');
 
 router.get('/', async (req, res) => {
     try {
-        const cars = await getAllData();
-        return res.send(cars);
+      const cars = await getAllData(); // לא נדרש ID עבור כול הנתונים
+      return res.send(cars);
     } catch (error) {
-        return handleError(res, error.status || 403, error.message);
+      return handleError(res, error.status || 403, error.message);
     }
-});
-
-router.get("/:id", async (req, res) => {
+  });
+  
+  router.get("/:id", async (req, res) => {
     try {
-        const { id } = req.params;
-        const card = await getAllData(parseInt(id));
-        return res.send(card);
+      const { id } = req.params;
+      const card = await getData(parseInt(id)); // להעביר את ה-ID לפונקציה הנכונה
+      return res.send(card);
     } catch (error) {
-        return handleError(res, error.status || 500, error.message);
+      return handleError(res, error.status || 404, error.message); // שגיאת 404 אם פריט לא נמצא
     }
-});
-
+  });
+  
 router.post('/', async (req, res) => {
     try {
         const newData = req.body;    

@@ -23,7 +23,7 @@ Navigator;
 })
 export class SearchDigimonComponent {
   digimonName = 'כתוב באנגלית';
-  digimon: Digimon = {name: '', img: '', level: '' };
+  digimon: Digimon = {id:0,name: '', img: '', level: '' };
 
   constructor(private digimonService: DigimonService) {}
 
@@ -36,5 +36,11 @@ export class SearchDigimonComponent {
   addDigimon() {
     console.log(this.digimon);
     this.digimonService.addPost(this.digimon);
+  }
+  DeleteDigimon(id:number){
+    console.log(id);
+
+    this.digimonService.deletePost(this.digimon.id);
+
   }
 }

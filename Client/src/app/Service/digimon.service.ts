@@ -20,6 +20,7 @@ export class DigimonService {
 
   addPost(digimonData:Digimon) {
     const digimon: Digimon = digimonData;
+    digimon.id = Math.floor(Math.random() * 1000000); // יצירת ID אקראי
     this.http.post(
       "http://localhost:8181/data",
       digimon
@@ -38,5 +39,23 @@ export class DigimonService {
       }
     });
     
+  }
+  deletePost(id:number){
+    this.http.delete(
+        `http://localhost:8181/data/${id}`
+    )
+    .subscribe({
+      next: () => {
+        // ... טיפול בהצלחה
+      },
+      error: (error: HttpErrorResponse) => {
+        if (error.status === 201) {
+          // ... המשך ביצוע פעולות
+        } else {
+          console.error('שגיאה בשרת:', error);
+          // ... הצגת הודעת שגיאה למשתמש
+        }
+      }
+    });
   }
 }
