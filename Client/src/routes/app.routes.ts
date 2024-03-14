@@ -3,5 +3,7 @@ import { SearchDigimonComponent } from '../app/search-digimon/search-digimon.com
 
 export const routes: Routes = [
     { path:'',component: SearchDigimonComponent},
+    { path:'digimom',component: SearchDigimonComponent},
+
 
 ];
