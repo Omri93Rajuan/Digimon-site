@@ -1,0 +1,10 @@
+.nav-link {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  
+  .nav-link:hover {
+    transition: 1.5s;
+    color:red;
+  }

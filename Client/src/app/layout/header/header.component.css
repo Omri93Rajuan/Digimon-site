@@ -3,7 +3,7 @@
 }
 
 .bg-digimon {
-  background: url("https://github.com/Omri93Rajuan/Digimon_site/blob/master/assets/bgHeader.png?raw=true")
+  background: url("/assets/bgHeader.png")
     50% 50% no-repeat;
     min-height: 150px;
 }
