@@ -4,8 +4,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { FormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { DigimonService } from '../Service/digimon.service';
-import { Digimon } from '../digimon';
+import { DigimonService } from '../../Service/digimon.service';
+import { Digimon } from '../../digimon';
 
 Navigator;
 @Component({
