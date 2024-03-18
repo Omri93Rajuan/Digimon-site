@@ -1,1 +1,8 @@
-<p>my-digimon works!</p>
+
+  @if (digimons) {
+    @for (digimon of digimons; track digimon.id){
+    <h1>{{digimon.name}}</h1>
+    <img src="{{digimon.img}}" alt="{{digimon.name}}">
+    <p>{{digimon.level}}</p>
+    }
+  }

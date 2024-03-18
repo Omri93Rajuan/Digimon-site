@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Digimon} from '../digimon';
 import { Router } from '@angular/router';
-import { Subject } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -14,6 +14,12 @@ export class DigimonService {
 
   constructor(private http: HttpClient,private router: Router) { }
 
+  getAllDigimon(): Observable<Digimon[]> {
+    return this.http.get<Digimon[]>(
+      "http://localhost:8181/data"
+    );
+  }
+  
   getDigimonByName(name: string) {
     return this.http.get(`https://digimon-api.vercel.app/api/digimon/name/${name}`);
   }
