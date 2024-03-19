@@ -1,1 +1,62 @@
-[{"name":"Patamon","img":"https://digimon.shadowsmith.com/img/patamon.jpg","level":"Rookie","id":197702},{"name":"Patamon","img":"https://digimon.shadowsmith.com/img/patamon.jpg","level":"Rookie","id":597368},{"name":"Agumon","img":"https://digimon.shadowsmith.com/img/agumon.jpg","level":"Rookie","id":475107},{"name":"Agumon","img":"https://digimon.shadowsmith.com/img/agumon.jpg","level":"Rookie","id":4413},{"name":"Tentomon","img":"https://digimon.shadowsmith.com/img/tentomon.jpg","level":"Rookie","id":466296},{"name":"Devimon","img":"https://digimon.shadowsmith.com/img/devimon.jpg","level":"Champion","id":733272},{"name":"Ogremon","img":"https://digimon.shadowsmith.com/img/ogremon.jpg","level":"Champion","id":114404},{"name":"Kiwimon","img":"https://digimon.shadowsmith.com/img/kiwimon.jpg","level":"Champion","id":563286},{"name":"Floramon","img":"https://digimon.shadowsmith.com/img/floramon.jpg","level":"Rookie","id":872273}]
+[
+  {
+    "name": "Patamon",
+    "img": "https://digimon.shadowsmith.com/img/patamon.jpg",
+    "level": "Rookie",
+    "id": 197702
+  },
+  {
+    "name": "Patamon",
+    "img": "https://digimon.shadowsmith.com/img/patamon.jpg",
+    "level": "Rookie",
+    "id": 597368
+  },
+  {
+    "name": "Agumon",
+    "img": "https://digimon.shadowsmith.com/img/agumon.jpg",
+    "level": "Rookie",
+    "id": 475107
+  },
+  {
+    "name": "Agumon",
+    "img": "https://digimon.shadowsmith.com/img/agumon.jpg",
+    "level": "Rookie",
+    "id": 4413
+  },
+  {
+    "name": "Tentomon",
+    "img": "https://digimon.shadowsmith.com/img/tentomon.jpg",
+    "level": "Rookie",
+    "id": 466296
+  },
+  {
+    "name": "Devimon",
+    "img": "https://digimon.shadowsmith.com/img/devimon.jpg",
+    "level": "Champion",
+    "id": 733272
+  },
+  {
+    "name": "Ogremon",
+    "img": "https://digimon.shadowsmith.com/img/ogremon.jpg",
+    "level": "Champion",
+    "id": 114404
+  },
+  {
+    "name": "Kiwimon",
+    "img": "https://digimon.shadowsmith.com/img/kiwimon.jpg",
+    "level": "Champion",
+    "id": 563286
+  },
+  {
+    "name": "Floramon",
+    "img": "https://digimon.shadowsmith.com/img/floramon.jpg",
+    "level": "Rookie",
+    "id": 872273
+  },
+  {
+    "id": 882301,
+    "name": "jewmon",
+    "img": "https://img.freepik.com/premium-photo/orthodox-jew-with-hat-very-happy-cheerful_1029077-257.jpg",
+    "level": "beliver"
+  }
+]

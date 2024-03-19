@@ -1,1 +1,13 @@
-<p>new-digimon works!</p>
+<h1> Angular 17 reactive contact form example </h1>
+
+<form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
+  <input type = "text" name = "fullName" placeholder = "שם" formControlName="name" >
+  <br/>
+
+  <input type = "email" name = "email" placeholder = "תמונה" formControlName="img" >
+  <br/>
+
+  <textarea name = "message" placeholder = "רמה" formControlName="level" ></textarea>
+  <br/>
+  <input type = "submit" value = "Send">
+</form> 
