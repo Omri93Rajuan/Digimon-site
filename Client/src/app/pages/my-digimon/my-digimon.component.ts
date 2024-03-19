@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { DigimonService } from '../../Service/digimon.service';
 import { Digimon } from '../../digimon';
+import {MatCardModule} from '@angular/material/card';
+
 import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
   selector: 'app-my-digimon',
   standalone: true,
-  imports: [],
+  imports: [MatCardModule],
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css'
 })
