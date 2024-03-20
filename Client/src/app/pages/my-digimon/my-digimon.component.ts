@@ -1,11 +1,13 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { DigimonService } from '../../Service/digimon.service';
 import { Digimon } from '../../digimon';
 import {MatCardModule} from '@angular/material/card';
 import {MatButtonModule} from '@angular/material/button';
 
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -16,13 +18,22 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrl: './my-digimon.component.css'
 })
 export class MyDigimonComponent implements OnInit {
-  digimons: Digimon | any = []
+  digimons: Digimon[] | any = signal([])
   errorMessage: string | undefined;
+  private subscription: Subscription | undefined; // Store the subscription
 
 
-  constructor(private digimonService: DigimonService){
+  constructor(private digimonService: DigimonService, private router: Router){
   }
   
+  DeleteDigimon(id:number){
+    console.log(this.digimons);
+    this.digimonService.deletePost(id);
+this.router.navigate(["myDigimon"]) 
+    
+
+  }
+
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({
       next: (digimons:Digimon[]) => {
@@ -33,4 +44,5 @@ export class MyDigimonComponent implements OnInit {
       }
     });
   }
-}
+ 
+  }

@@ -1,13 +1,10 @@
-<h1> Angular 17 reactive contact form example </h1>
-
 <form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
-  <input type = "text" name = "fullName" placeholder = "שם" formControlName="name" >
-  <br/>
+    <mat-label>שם הדיג'ימון</mat-label>
+    <input type="text" matInput placeholder="שם" formControlName="name">
 
-  <input type = "email" name = "email" placeholder = "תמונה" formControlName="img" >
-  <br/>
+    <input type="email" matInput placeholder="תמונה" formControlName="img">
 
-  <textarea name = "message" placeholder = "רמה" formControlName="level" ></textarea>
-  <br/>
-  <input type = "submit" value = "Send">
-</form> 
+    <textarea matInput placeholder="רמה" formControlName="level"></textarea>
+
+  <button type="submit" mat-raised-button>שלח</button>
+</form>

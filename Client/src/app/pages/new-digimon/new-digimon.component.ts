@@ -3,11 +3,12 @@ import {  FormBuilder,FormGroup } from '@angular/forms'; // ייבוא חסר
 import { ReactiveFormsModule} from '@angular/forms';
 import { DigimonService } from '../../Service/digimon.service';
 import { Digimon } from '../../digimon';
+import { MatFormFieldModule} from '@angular/material/form-field';
 
 @Component({
   selector: 'app-new-digimon',
   standalone: true,
-  imports: [ReactiveFormsModule], 
+  imports: [ReactiveFormsModule,MatFormFieldModule,], 
   templateUrl: './new-digimon.component.html',
   styleUrls: ['./new-digimon.component.css']
 })
@@ -33,4 +34,6 @@ export class NewDigimonComponent {
     this.digimon = this.digimonForm.value
     this.digimonService.addPost(this.digimon);
   }
+
+
 }
