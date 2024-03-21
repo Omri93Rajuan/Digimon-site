@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.digimon-card {
+  background-color: #EBC55A;
+  max-width: 250px;
+}
+
+/* עיצוב שדות טופס */
+
+mat-form-field {
+  margin: 10px;
+}
+
+mat-label {
+  font-size: 16px;
+}
+
+mat-input,
+mat-select,
+textarea {
+  font-size: 14px;
+  padding: 5px;
+}
+
+/* עיצוב כפתור */
+
+button {
+  margin: 10px;
+  font-size: 16px;
+  padding: 5px 10px;
+  
+}
