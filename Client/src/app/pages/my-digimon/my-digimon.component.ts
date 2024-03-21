@@ -7,7 +7,7 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 
 
 @Component({
@@ -27,12 +27,13 @@ export class MyDigimonComponent implements OnInit {
   }
   
   DeleteDigimon(id:number){
-    console.log(this.digimons);
     this.digimonService.deletePost(id);
-this.router.navigate(["myDigimon"]) 
-    
-
   }
+
+  editDigimon(id:number,digimonData:Digimon){
+    this.digimonService.editPost(id,digimonData);
+  }
+
 
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({

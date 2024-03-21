@@ -64,4 +64,25 @@ export class DigimonService {
       }
     });
   }
+
+  async editPost(id: number, postData: Digimon): Promise<void> {
+    try {
+      const response = await this.http.patch<Digimon>(
+        `http://localhost:8181/data/${id}`,
+        postData
+      ).toPromise();
+      // ... טיפול בהצלחה
+    } catch (error) {
+      if (error instanceof HttpErrorResponse) {
+        if (error.status === 201) {
+          // ... המשך ביצוע פעולות
+        } else {
+          console.error('שגיאה בשרת:', error.message);
+          // ... הצגת הודעת שגיאה למשתמש
+        }
+      } else {
+        console.error('שגיאה בלתי צפויה:', error);
+      }
+    }
+  }
 }
