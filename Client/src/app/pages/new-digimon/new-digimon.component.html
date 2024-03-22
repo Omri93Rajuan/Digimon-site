@@ -1,23 +1,20 @@
-<!-- <form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
-    <mat-label>שם הדיג'ימון</mat-label>
-    <input type="text" matInput placeholder="שם" formControlName="name">
-
-    <input type="email" matInput placeholder="תמונה" formControlName="img">
-
-    <textarea matInput placeholder="רמה" formControlName="level"></textarea>
-
-  <button type="submit" mat-raised-button>שלח</button>
-</form> -->
+<page-header
+  title="הוספה"
+  subTitle="את מכירה דיג'ימון חדש? בואי תרשמי אותו!"
+  icon="fa-solid fa-sign-in
+  "
+  bgColor="alert-info rounded-3 p-2 m-2"
+></page-header>
 <div class="container">
   <mat-card class="digimon-card">
     <form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
       <mat-form-field>
         <mat-label>שם</mat-label>
-        <input matInput formControlName="name">
+        <input matInput formControlName="name" required>
       </mat-form-field>
       <mat-form-field>
         <mat-label>רמת התפתחות</mat-label>
-        <mat-select formControlName="level">
+        <mat-select formControlName="level" >
           <mat-option value="Rookie">Rookie</mat-option>
           <mat-option value="Champion">Champion</mat-option>
           <mat-option value="Mega">Mega</mat-option>
@@ -28,9 +25,10 @@
         <mat-label>תמונה</mat-label>
         <textarea matInput formControlName="img"></textarea>
       </mat-form-field>
-      <div style="text-align: center;">
-      <button mat-raised-button class="btn" style="background-color: #EBC55A;">שלח</button>
-    </div>
+      
     </form>
   </mat-card>
+  <div style="text-align: center;">
+    <button mat-raised-button class="btn" style="background-color: #EBC55A;">שלח</button>
+  </div>
 </div>

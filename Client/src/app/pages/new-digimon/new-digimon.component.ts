@@ -9,11 +9,14 @@ import { MatInput } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
+
+
 
 @Component({
   selector: 'app-new-digimon',
   standalone: true,
-  imports: [ReactiveFormsModule,MatFormFieldModule,MatCard,MatButton,MatInputModule,MatSelectModule], 
+  imports: [ReactiveFormsModule,MatFormFieldModule,MatCard,MatButton,MatInputModule,MatSelectModule,PageHeaderComponent], 
   templateUrl: './new-digimon.component.html',
   styleUrls: ['./new-digimon.component.css']
 })

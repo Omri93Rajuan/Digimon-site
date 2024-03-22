@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { DigimonService } from '../../Service/digimon.service';
 import { Digimon } from '../../digimon';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 Navigator;
 @Component({
@@ -17,6 +18,7 @@ Navigator;
     FormsModule,
     MatButtonModule,
     MatIconModule,
+    PageHeaderComponent
   ],
   templateUrl: './search-digimon.component.html',
   styleUrl: './search-digimon.component.css',

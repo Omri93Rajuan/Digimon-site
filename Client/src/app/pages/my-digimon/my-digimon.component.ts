@@ -8,12 +8,13 @@ import {MatButtonModule} from '@angular/material/button';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 @Component({
   selector: 'app-my-digimon',
   standalone: true,
-  imports: [MatCardModule,MatButtonModule],
+  imports: [MatCardModule,MatButtonModule,PageHeaderComponent
+  ],
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css'
 })
