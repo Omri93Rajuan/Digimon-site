@@ -1,5 +1,5 @@
 
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, WritableSignal, effect, signal } from '@angular/core';
 import { DigimonService } from '../../Service/digimon.service';
 import { Digimon } from '../../digimon';
 import {MatCardModule} from '@angular/material/card';
@@ -7,7 +7,6 @@ import {MatButtonModule} from '@angular/material/button';
 
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 @Component({
@@ -19,16 +18,20 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
   styleUrl: './my-digimon.component.css'
 })
 export class MyDigimonComponent implements OnInit {
-  digimons: Digimon[] | any = signal([])
+  digimons :WritableSignal <Digimon[]> = signal([{id:0,name: '', img: '', level: '' }])
+  
   errorMessage: string | undefined;
-  private subscription: Subscription | undefined; // Store the subscription
 
 
   constructor(private digimonService: DigimonService, private router: Router){
+    effect(() => {
+console.log(`${this.digimons()} נשאר לנו עוד`);
+    });
   }
   
   DeleteDigimon(id:number){
     this.digimonService.deletePost(id);
+    this.digimons.set(this.digimons().filter(digimon => digimon.id !== id))
   }
 
   editDigimon(id:number,digimonData:Digimon){
@@ -38,8 +41,9 @@ export class MyDigimonComponent implements OnInit {
 
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({
-      next: (digimons:Digimon[]) => {
-        this.digimons = digimons;
+      next: (digimons:Digimon[] | any) => {        
+        this.digimons.set(digimons);
+
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.message;

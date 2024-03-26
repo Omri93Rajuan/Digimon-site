@@ -26,6 +26,7 @@ export class NewDigimonComponent {
 
   constructor(private formBuilder: FormBuilder,private digimonService: DigimonService) { 
     this.createDigimonForm();
+    
   }
 
   createDigimonForm() {
@@ -38,7 +39,7 @@ export class NewDigimonComponent {
   }
 
   addDigimon() {
-    console.log(this.digimonForm);
+    
     this.digimon = this.digimonForm.value
     this.digimonService.addPost(this.digimon);
   }
