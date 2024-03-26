@@ -24,9 +24,7 @@ export class MyDigimonComponent implements OnInit {
 
 
   constructor(private digimonService: DigimonService, private router: Router){
-    effect(() => {
-console.log(`${this.digimons()} נשאר לנו עוד`);
-    });
+
   }
   
   DeleteDigimon(id:number){
