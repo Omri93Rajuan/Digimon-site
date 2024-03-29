@@ -19,6 +19,12 @@ export class DigimonService {
       "http://localhost:8181/data"
     );
   }
+  getDigimonById(id:any): Observable<any> {
+    return this.http.get<any>(
+      `http://localhost:8181/data/${id}`
+      );
+  }
+  
   
   getDigimonByName(name: string) {
     return this.http.get(`https://digimon-api.vercel.app/api/digimon/name/${name}`);

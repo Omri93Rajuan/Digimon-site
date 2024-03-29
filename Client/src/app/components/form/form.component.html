@@ -1,0 +1,26 @@
+<div class="container">
+  <mat-card class="digimon-card">
+    <form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
+      <mat-form-field>
+        <mat-label>שם</mat-label>
+        <input matInput formControlName="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>רמת התפתחות</mat-label>
+        <mat-select formControlName="level">
+          <mat-option value="Rookie">Rookie</mat-option>
+          <mat-option value="Champion">Champion</mat-option>
+          <mat-option value="Mega">Mega</mat-option>
+          <mat-option value="Ultimate">Ultimate</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>תמונה</mat-label>
+        <textarea matInput formControlName="img"></textarea>
+      </mat-form-field>
+      <button mat-raised-button class="btn" style="background-color: #EBC55A;text-align: center;">שלח</button>
+    </form>
+  </mat-card>
+</div>
+
+

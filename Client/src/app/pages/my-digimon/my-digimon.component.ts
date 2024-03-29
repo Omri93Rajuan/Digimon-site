@@ -16,11 +16,14 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
 
 import { MatDialog } from '@angular/material/dialog';
 import { NewDigimonComponent } from '../new-digimon/new-digimon.component';
+import { FormComponent } from '../../components/form/form.component';
+
+
 
 @Component({
   selector: 'app-my-digimon',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, PageHeaderComponent],
+  imports: [MatCardModule, MatButtonModule, PageHeaderComponent,FormComponent],
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css',
 })
@@ -37,12 +40,12 @@ export class MyDigimonComponent implements OnInit {
   ) {}
 
   openDialog(enterAnimationDuration: string, exitAnimationDuration: string,digimon:Digimon): void {
-    this.dialog.open(NewDigimonComponent, {
+    this.dialog.open(FormComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
       data:[
-        digimon.name
+        
       ]
     });console.log(digimon)
   }
