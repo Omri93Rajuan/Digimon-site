@@ -39,15 +39,15 @@ export class MyDigimonComponent implements OnInit {
     public dialog: MatDialog
   ) {}
 
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string,digimon:Digimon): void {
+  openDialog(enterAnimationDuration: string, exitAnimationDuration: string,digimonNumber:Digimon['id']): void {
     this.dialog.open(FormComponent, {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,
-      data:[
-        
+      data:[{
+        id:digimonNumber}
       ]
-    });console.log(digimon)
+    });console.log(digimonNumber)
   }
 
   DeleteDigimon(id: number) {

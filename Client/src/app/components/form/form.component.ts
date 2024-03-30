@@ -18,7 +18,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class FormComponent {
   digimonForm!: FormGroup;
-  id =input.required<number>()
+  id =input<number>()
   digimon = signal(null)
 
   constructor( private DS:DigimonService,private formBuilder: FormBuilder){
