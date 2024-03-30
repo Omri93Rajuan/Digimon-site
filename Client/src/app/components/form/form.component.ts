@@ -1,4 +1,4 @@
-import { Component, effect, input, signal } from '@angular/core';
+import { Component, OnInit, effect, input, signal } from '@angular/core';
 import {  FormBuilder,FormGroup } from '@angular/forms'; // ייבוא חסר
 import { ReactiveFormsModule} from '@angular/forms';
 import { DigimonService } from '../../service/digimon.service';
@@ -16,32 +16,39 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   templateUrl: './form.component.html',
   styleUrl: './form.component.css'
 })
-export class FormComponent {
+export class FormComponent implements OnInit {
   digimonForm!: FormGroup;
   id =input<number>()
-  digimon = signal(null)
+  digimon = signal<Digimon>(
+    { id: 0, name: '', img: '', level: '' },
+  )
 
-  constructor( private DS:DigimonService,private formBuilder: FormBuilder){
+  constructor( private DS:DigimonService,private formBuilder: FormBuilder
+    ){
     this.createDigimonForm()
-    effect(() =>{
-      this.DS.getDigimonById(this.id()).subscribe(
-        data => this.digimon = data        
-      )
-    })
-    console.log(this.digimon);
+    }
+  
 
-  }
+    createDigimonForm() {
+      this.digimonForm = this.formBuilder.group({
+        id: [this.digimon().id],
+        name: [this.digimon().name],
+        img: [this.digimon().img],
+        level: [this.digimon().level] 
+      });
+    }
 
-  createDigimonForm() {
-    this.digimonForm = this.formBuilder.group({
-      id:0,
-      name: [''],
-      img: [''],
-      level: ['']
-    });
-  }
   addDigimon(){
-    console.log(this.digimon);
+    console.log("this is the digimon" +this.digimon);
     
+  }
+
+  ngOnInit(): void {
+    this.DS.getDigimonById(this.id()).subscribe(
+      data => {
+        this.digimon.set(data);
+        this.createDigimonForm(); 
+      }      
+    );
   }
 }

@@ -28,8 +28,10 @@
       <button mat-button (click)="DeleteDigimon(digimon.id)">Delete</button>
     </mat-card-actions>
   </mat-card>
+  <app-form [id]='digimon.id'></app-form>
 
   } } @else() {
   <h1>sorrrrrryyyyy bro</h1>
   }
 </div>
+

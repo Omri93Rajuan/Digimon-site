@@ -29,7 +29,7 @@ import { FormComponent } from '../../components/form/form.component';
 })
 export class MyDigimonComponent implements OnInit {
   digimons: WritableSignal<Digimon[]> = signal([
-    { id: 0, name: '', img: '', level: '' },
+    { id: 456102, name: '', img: '', level: '' },
   ]);
   errorMessage: string | undefined;
 
@@ -43,10 +43,8 @@ export class MyDigimonComponent implements OnInit {
     this.dialog.open(FormComponent, {
       width: '250px',
       enterAnimationDuration,
-      exitAnimationDuration,
-      data:[{
-        id:digimonNumber}
-      ]
+      exitAnimationDuration,     
+      data: digimonNumber  
     });console.log(digimonNumber)
   }
 
