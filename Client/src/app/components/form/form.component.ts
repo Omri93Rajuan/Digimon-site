@@ -1,4 +1,4 @@
-import { Component, OnInit, effect, input, signal } from '@angular/core';
+import { Component, Inject, OnInit, effect, input, signal } from '@angular/core';
 import {  FormBuilder,FormGroup } from '@angular/forms'; // ייבוא חסר
 import { ReactiveFormsModule} from '@angular/forms';
 import { DigimonService } from '../../service/digimon.service';
@@ -14,7 +14,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   standalone: true,
   imports: [ReactiveFormsModule,MatFormFieldModule,MatCard,MatButton,MatInputModule,MatSelectModule],
   templateUrl: './form.component.html',
-  styleUrl: './form.component.css'
+  styleUrl: './form.component.css' ,
 })
 export class FormComponent implements OnInit {
   digimonForm!: FormGroup;
@@ -22,10 +22,13 @@ export class FormComponent implements OnInit {
   digimon = signal<Digimon>(
     { id: 0, name: '', img: '', level: '' },
   )
+  dataRow:any ={}
 
   constructor( private DS:DigimonService,private formBuilder: FormBuilder, 
     ){
+      
     this.createDigimonForm()
+    
     }
   
 
@@ -48,6 +51,7 @@ export class FormComponent implements OnInit {
       data => {
         this.digimon.set(data);
         this.createDigimonForm(); 
+
       }      
     );
   }

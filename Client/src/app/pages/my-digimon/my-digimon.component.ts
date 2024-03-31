@@ -45,8 +45,7 @@ export class MyDigimonComponent implements OnInit {
       exitAnimationDuration,     
         data: {id: digimonNumber}  
     })
-    console.log(FormComponent);
-    
+     
   }
 
   DeleteDigimon(id: number) {
