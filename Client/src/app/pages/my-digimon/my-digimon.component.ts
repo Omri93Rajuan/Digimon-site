@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 import { MatDialog } from '@angular/material/dialog';
-import { NewDigimonComponent } from '../new-digimon/new-digimon.component';
 import { FormComponent } from '../../components/form/form.component';
 
 
@@ -29,7 +28,7 @@ import { FormComponent } from '../../components/form/form.component';
 })
 export class MyDigimonComponent implements OnInit {
   digimons: WritableSignal<Digimon[]> = signal([
-    { id: 456102, name: '', img: '', level: '' },
+    { id: 0, name: '', img: '', level: '' },
   ]);
   errorMessage: string | undefined;
 
@@ -44,8 +43,10 @@ export class MyDigimonComponent implements OnInit {
       width: '250px',
       enterAnimationDuration,
       exitAnimationDuration,     
-      data: digimonNumber  
-    });console.log(digimonNumber)
+        data: {id: digimonNumber}  
+    })
+    console.log(FormComponent);
+    
   }
 
   DeleteDigimon(id: number) {

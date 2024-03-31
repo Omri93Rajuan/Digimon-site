@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
     { id: 0, name: '', img: '', level: '' },
   )
 
-  constructor( private DS:DigimonService,private formBuilder: FormBuilder
+  constructor( private DS:DigimonService,private formBuilder: FormBuilder, 
     ){
     this.createDigimonForm()
     }
@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
     }
 
   addDigimon(){
-    console.log("this is the digimon" +this.digimon);
+    console.log("this is the digimon" +this.digimon());
     
   }
 
