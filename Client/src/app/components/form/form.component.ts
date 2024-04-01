@@ -51,6 +51,8 @@ export class FormComponent implements OnInit {
       data => {
         this.digimon.set(data);
         this.createDigimonForm(); 
+        console.log("hello");
+        
 
       }      
     );

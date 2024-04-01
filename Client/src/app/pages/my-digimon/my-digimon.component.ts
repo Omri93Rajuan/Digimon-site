@@ -14,7 +14,6 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
-import { MatDialog } from '@angular/material/dialog';
 import { FormComponent } from '../../components/form/form.component';
 
 
@@ -31,22 +30,12 @@ export class MyDigimonComponent implements OnInit {
     { id: 0, name: '', img: '', level: '' },
   ]);
   errorMessage: string | undefined;
+  uniqID:number = 0
 
   constructor(
     private digimonService: DigimonService,
     private router: Router,
-    public dialog: MatDialog
   ) {}
-
-  openDialog(enterAnimationDuration: string, exitAnimationDuration: string,digimonNumber:Digimon['id']): void {
-    this.dialog.open(FormComponent, {
-      width: '250px',
-      enterAnimationDuration,
-      exitAnimationDuration,     
-        data: {id: digimonNumber}  
-    })
-     
-  }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
@@ -56,6 +45,8 @@ export class MyDigimonComponent implements OnInit {
   editDigimon(id: number, digimonData: Digimon) {
     this.digimonService.editPost(id, digimonData);
   }
+
+
 
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({
