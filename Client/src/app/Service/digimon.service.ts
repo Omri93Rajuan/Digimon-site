@@ -2,7 +2,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Digimon} from '../digimon';
 import { Router } from '@angular/router';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, catchError, tap, throwError } from 'rxjs';
 
 
 @Injectable({
@@ -30,7 +30,7 @@ export class DigimonService {
     return this.http.get(`https://digimon-api.vercel.app/api/digimon/name/${name}`);
   }
 
-  addPost(digimonData:Digimon) {
+  addPost(digimonData:any) {
     const digimon: Digimon = digimonData;
     digimon.id = Math.floor(Math.random() * 1000000); // יצירת ID אקראי
     this.http.post(
@@ -73,22 +73,37 @@ export class DigimonService {
 
   async editPost(id: number, postData: Digimon): Promise<void> {
     try {
-      const response = await this.http.patch<Digimon>(
+      const response$ = this.http.patch<Digimon>(
         `http://localhost:8181/data/${id}`,
         postData
-      ).toPromise();
-      // ... טיפול בהצלחה
+      ).pipe(
+        // טיפול בתגובה מוצלחת
+        tap(response => {
+          console.log('פוסט עודכן בהצלחה:', response);
+          // ... לוגיקה נוספת להצלחה
+        }),
+        // טיפול בשגיאות
+        catchError(error => {
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 201) {
+              // ... טיפול במקרה ספציפי של 201
+            } else {
+              console.error('שגיאה מהשרת:', error.message);
+              // ... הצגת הודעת שגיאה ידידותית למשתמש
+            }
+          } else {
+            console.error('שגיאה בלתי צפויה:', error);
+          }
+          return throwError(error); // זריקת השגיאה שוב לטיפול נוסף
+        })
+      );
+  
+      // אין צורך ב-toPromise() יותר
+      await response$.subscribe();
+  
     } catch (error) {
-      if (error instanceof HttpErrorResponse) {
-        if (error.status === 201) {
-          // ... המשך ביצוע פעולות
-        } else {
-          console.error('שגיאה בשרת:', error.message);
-          // ... הצגת הודעת שגיאה למשתמש
-        }
-      } else {
-        console.error('שגיאה בלתי צפויה:', error);
-      }
+      console.error('שגיאה כללית במהלך עריכה:', error);
+      // ... טיפול בשגיאות כלליות כאן
     }
   }
 }

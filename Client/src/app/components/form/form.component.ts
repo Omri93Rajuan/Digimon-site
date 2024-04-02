@@ -42,18 +42,18 @@ export class FormComponent implements OnInit {
     }
 
   addDigimon(){
-    console.log("this is the digimon" +this.digimon());
-    
+    console.log(this.digimon());
+
+this.DS.editPost(this.digimon().id,this.digimon())  
+console.log(this.digimon());
+
   }
 
   ngOnInit(): void {
     this.DS.getDigimonById(this.id()).subscribe(
       data => {
         this.digimon.set(data);
-        this.createDigimonForm(); 
-        console.log("hello");
-        
-
+        this.createDigimonForm();        
       }      
     );
   }
