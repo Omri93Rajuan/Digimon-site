@@ -26,8 +26,7 @@
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
-        data-bs-target="#digimonEditForm"
-      >
+        attr.data-bs-target="#{{digimon.id}}"      >
         Launch demo modal
       </button>
       <button class="btn btn-secondary" (click)="DeleteDigimon(digimon.id)">
@@ -36,7 +35,7 @@
     </mat-card-actions>
   </mat-card>
   <!-- <app-form [id]="digimon.id"></app-form> -->
-  <div class="modal fade" id="digimonEditForm" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id={{digimon.id}} tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">

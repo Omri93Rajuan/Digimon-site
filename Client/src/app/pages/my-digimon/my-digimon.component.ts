@@ -1,7 +1,9 @@
 import {
   Component,
   OnInit,
+  Signal,
   WritableSignal,
+  computed,
   effect,
   signal,
 } from '@angular/core';
@@ -30,7 +32,6 @@ export class MyDigimonComponent implements OnInit {
     { id: 0, name: '', img: '', level: '' },
   ]);
   errorMessage: string | undefined;
-  uniqID:number = 0
 
   constructor(
     private digimonService: DigimonService,
