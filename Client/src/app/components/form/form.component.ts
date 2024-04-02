@@ -42,10 +42,8 @@ export class FormComponent implements OnInit {
     }
 
   addDigimon(){
-    console.log(this.digimon());
+this.DS.editPost(this.digimon().id,this.digimonForm.value)  
 
-this.DS.editPost(this.digimon().id,this.digimon())  
-console.log(this.digimon());
 
   }
 

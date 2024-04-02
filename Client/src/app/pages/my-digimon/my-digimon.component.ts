@@ -1,10 +1,7 @@
 import {
   Component,
   OnInit,
-  Signal,
   WritableSignal,
-  computed,
-  effect,
   signal,
 } from '@angular/core';
 import { DigimonService } from '../../service/digimon.service';
@@ -42,12 +39,6 @@ export class MyDigimonComponent implements OnInit {
     this.digimonService.deletePost(id);
     this.digimons.set(this.digimons().filter((digimon) => digimon.id !== id));
   }
-
-  editDigimon(id: number, digimonData: Digimon) {
-    this.digimonService.editPost(id, digimonData);
-  }
-
-
 
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({

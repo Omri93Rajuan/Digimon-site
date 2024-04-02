@@ -71,7 +71,7 @@ export class DigimonService {
     });
   }
 
-  async editPost(id: number, postData: Digimon): Promise<void> {
+  async editPost(id: number, postData: any): Promise<void> {
     try {
       const response = await this.http.patch<Digimon>(
         `http://localhost:8181/data/${id}`,
