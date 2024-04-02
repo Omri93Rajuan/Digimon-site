@@ -2,6 +2,7 @@ import {
   Component,
   OnInit,
   WritableSignal,
+  effect,
   signal,
 } from '@angular/core';
 import { DigimonService } from '../../service/digimon.service';
@@ -33,7 +34,13 @@ export class MyDigimonComponent implements OnInit {
   constructor(
     private digimonService: DigimonService,
     private router: Router,
-  ) {}
+    
+  ) {effect( () =>{
+    console.log(this.digimons());
+    
+  })
+   
+  }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
@@ -44,6 +51,7 @@ export class MyDigimonComponent implements OnInit {
     this.digimonService.getAllDigimon().subscribe({
       next: (digimons: Digimon[] | any) => {
         this.digimons.set(digimons);
+        
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.message;

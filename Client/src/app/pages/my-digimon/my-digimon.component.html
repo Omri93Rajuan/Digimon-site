@@ -21,12 +21,11 @@
       <p>{{ digimon.level }}</p>
     </mat-card-header>
     <mat-card-actions>
-      <!-- <button mat-raised-button (click)="openDialog('0ms', '0ms',digimon.id)">Open dialog without animation</button> -->
       <button
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
-        attr.data-bs-target="#{{digimon.id}}"      >
+        attr.data-bs-target="#{{digimon.id}}">
         עריכה
       </button>
       <button class="btn btn-secondary" (click)="DeleteDigimon(digimon.id)">
@@ -44,11 +43,9 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-           <app-form [id]="digimon.id"></app-form>
+           <app-form [id]="digimon.id" ></app-form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">סגירה</button>
-          <button type="button" class="btn btn-primary">שמירה</button>
         </div>
       </div>
     </div>

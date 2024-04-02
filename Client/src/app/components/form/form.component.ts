@@ -8,6 +8,7 @@ import { MatButton } from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -24,7 +25,7 @@ export class FormComponent implements OnInit {
   )
   dataRow:any ={}
 
-  constructor( private DS:DigimonService,private formBuilder: FormBuilder, 
+  constructor( private DS:DigimonService,private formBuilder: FormBuilder, private router: Router
     ){
       
     this.createDigimonForm()
@@ -43,7 +44,6 @@ export class FormComponent implements OnInit {
 
   addDigimon(){
 this.DS.editPost(this.digimon().id,this.digimonForm.value)  
-
 
   }
 
