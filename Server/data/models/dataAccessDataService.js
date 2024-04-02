@@ -56,19 +56,22 @@ const deleteData = async (id) => {
 
 const updateData = async (id, updatedData) => {
     try {
-        const currentData = await getData();
-        const index = currentData.findIndex((item) => item.id === id);
-        if (index === -1) {
-            throw new Error("Could not find this card in the database");
-        }
-        currentData[index] = { ...currentData[index], ...updatedData };
-        fs.writeFileSync("./data.json", JSON.stringify(currentData));
-        return Promise.resolve(currentData[index]);
+      const currentData = JSON.parse(await fs.promises.readFile("./data.json"));
+      const index = currentData.findIndex((item) => item.id === id);
+  
+      if (index === -1) {
+        throw new Error("Could not find this card in the database");
+      }
+  
+      currentData[index] = { ...currentData[index], ...updatedData };
+      await fs.promises.writeFile("./data.json", JSON.stringify(currentData));
+      return Promise.resolve(currentData[index]);
     } catch (error) {
-        error.status = 404;
-        throw error;
+      error.status = 404;
+      throw error;
     }
-};
+  };
+  
 
 module.exports = {
     getAllData,
