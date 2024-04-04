@@ -16,12 +16,10 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
 
 import { FormComponent } from '../../components/form/form.component';
 
-
-
 @Component({
   selector: 'app-my-digimon',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, PageHeaderComponent,FormComponent],
+  imports: [MatCardModule, MatButtonModule, PageHeaderComponent, FormComponent],
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css',
 })
@@ -31,34 +29,25 @@ export class MyDigimonComponent implements OnInit {
   ]);
   errorMessage: string | undefined;
 
-  constructor(
-    private digimonService: DigimonService,
-    private router: Router,
-    
-  ) {effect( () =>{
-    console.log(this.digimons());
-    
-  })
-   
-  }
+  constructor(private digimonService: DigimonService, private router: Router) {}
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
     this.digimons.set(this.digimons().filter((digimon) => digimon.id !== id));
   }
 
-  addItem(newItem:any){
-console.log(newItem);
-
+  handleEvent(event: any) {
+    console.log(event);
+    this.digimonService.editPost(event.id, event);
+    this.digimons.update((digimons) =>
+      digimons.map((d) => (d.id === event.id ? event : d))
+    );
   }
-
-
 
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({
       next: (digimons: Digimon[] | any) => {
         this.digimons.set(digimons);
-        
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.message;
