@@ -23,7 +23,7 @@ export class FormComponent implements OnInit {
   digimon = signal<Digimon>(
     { id: 0, name: '', img: '', level: '' },
   )
-  @Output() childEvent = new EventEmitter<Digimon>();
+  @Output() digimonFormEvent = new EventEmitter<Digimon>();
 
   dataRow:any ={}
 
@@ -44,12 +44,8 @@ export class FormComponent implements OnInit {
       });
     }
 
-  addDigimon(){
-this.DS.editPost(this.digimon().id,this.digimonForm.value)  
-
-  }
   emitChildData(){    
-    this.childEvent.emit(this.digimonForm.value);
+    this.digimonFormEvent.emit(this.digimonForm.value);
 
   }
 

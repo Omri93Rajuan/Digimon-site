@@ -5,6 +5,7 @@
   "
   bgColor="alert-info rounded-3 p-2 m-2"
 ></page-header>
+
 <mat-form-field class="example-form-field">
   <mat-label>שם הדיג'ימון</mat-label>
   <input matInput type="text" [(ngModel)]="digimonName" />
@@ -28,7 +29,8 @@
   !חפש דיג'ימון
 </button>
 
-@if (digimon) {
+  @if (digimon.id != 0) {
+    @defer(on timer(500ms)){
   <h1>{{digimon.name}}</h1>
   <img src="{{digimon.img}}" alt="{{digimon.name}}">
   <p>{{digimon.level}}</p>
@@ -38,13 +40,10 @@
   mat-raised-button
   (click)="addDigimon()"
 >
-Take me!
+קחי אותי!
 </button>
-<button
-  class="btn"
-  style="background-color: #ebc55a; margin-right: 10px"
-  mat-raised-button
-  (click)="DeleteDigimon(digimon.id)"
->
-Delete</button>
+}@placeholder {
+  <mat-spinner></mat-spinner>
+}
+
 }

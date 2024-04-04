@@ -7,6 +7,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { DigimonService } from '../../service/digimon.service';
 import { Digimon } from '../../digimon';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 Navigator;
 @Component({
@@ -18,7 +19,8 @@ Navigator;
     FormsModule,
     MatButtonModule,
     MatIconModule,
-    PageHeaderComponent
+    PageHeaderComponent,
+    MatProgressSpinnerModule
   ],
   templateUrl: './search-digimon.component.html',
   styleUrl: './search-digimon.component.css',
