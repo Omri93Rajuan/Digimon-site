@@ -2,7 +2,8 @@
     width: 200px;
   }
 
-  /* .btn{
-    background-color: #EBC55A;
-    font-size: 100px;
-} */
+  #error-message {
+    font-size: 14px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }

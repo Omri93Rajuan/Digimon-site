@@ -28,15 +28,24 @@ Navigator;
 export class SearchDigimonComponent {
   digimonName = 'כתוב באנגלית';
   digimon: Digimon = {id:0,name: '', img: '', level: '' };
+  errorMessage: string | undefined;
 
   constructor(private digimonService: DigimonService) {}
 
   getDigimonByName(digimonName: string) {
-    this.digimonService.getDigimonByName(digimonName).subscribe((data: any) => {
-      this.digimon = data[0];
+    this.digimonService.getDigimonByName(digimonName).subscribe({
+      next: (data: any) => {
+        this.digimon = data[0];
+      },
+      error: (error: any) => {
+        this.errorMessage = "הדיג'ימון לא נמצא במערכת";
+
+        setTimeout(() => {
+          this.errorMessage = undefined;
+        }, 3000); 
+      }
     });
   }
-
   addDigimon() {
     console.log(this.digimon);
     this.digimonService.addPost(this.digimon);
