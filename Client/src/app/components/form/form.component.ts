@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, effect, input, signal } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output, effect, input, signal } from '@angular/core';
 import {  FormBuilder,FormGroup } from '@angular/forms'; // ייבוא חסר
 import { ReactiveFormsModule} from '@angular/forms';
 import { DigimonService } from '../../service/digimon.service';
@@ -23,6 +23,8 @@ export class FormComponent implements OnInit {
   digimon = signal<Digimon>(
     { id: 0, name: '', img: '', level: '' },
   )
+  @Output() childEvent = new EventEmitter<any>();
+
   dataRow:any ={}
 
   constructor( private DS:DigimonService,private formBuilder: FormBuilder, private router: Router
@@ -46,6 +48,12 @@ export class FormComponent implements OnInit {
 this.DS.editPost(this.digimon().id,this.digimonForm.value)  
 
   }
+  emitChildData(){
+    this.childEvent.emit(this.digimonForm.value);
+
+  }
+
+
 
   ngOnInit(): void {
     this.DS.getDigimonById(this.id()).subscribe(

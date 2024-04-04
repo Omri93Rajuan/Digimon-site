@@ -47,6 +47,13 @@ export class MyDigimonComponent implements OnInit {
     this.digimons.set(this.digimons().filter((digimon) => digimon.id !== id));
   }
 
+  addItem(newItem:any){
+console.log(newItem);
+
+  }
+
+
+
   ngOnInit(): void {
     this.digimonService.getAllDigimon().subscribe({
       next: (digimons: Digimon[] | any) => {

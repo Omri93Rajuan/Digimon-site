@@ -1,6 +1,6 @@
 <div class="container">
   <mat-card class="digimon-card">
-    <form [formGroup]="digimonForm" (ngSubmit)="addDigimon()">
+    <form [formGroup]="digimonForm" (ngSubmit)="emitChildData()">
       <mat-form-field>
         <mat-label>שם</mat-label>
         <input matInput formControlName="name">
