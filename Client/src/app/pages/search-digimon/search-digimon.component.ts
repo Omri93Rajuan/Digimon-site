@@ -8,6 +8,8 @@ import { DigimonService } from '../../service/digimon.service';
 import { Digimon } from '../../digimon';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatGridListModule} from '@angular/material/grid-list';
+import { Router } from '@angular/router';
 
 Navigator;
 @Component({
@@ -20,7 +22,8 @@ Navigator;
     MatButtonModule,
     MatIconModule,
     PageHeaderComponent,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatGridListModule
   ],
   templateUrl: './search-digimon.component.html',
   styleUrl: './search-digimon.component.css',
@@ -30,7 +33,7 @@ export class SearchDigimonComponent {
   digimon: Digimon = {id:0,name: '', img: '', level: '' };
   errorMessage: string | undefined;
 
-  constructor(private digimonService: DigimonService) {}
+  constructor(private digimonService: DigimonService, private router:Router) {}
 
   getDigimonByName(digimonName: string) {
     this.digimonService.getDigimonByName(digimonName).subscribe({
@@ -49,6 +52,8 @@ export class SearchDigimonComponent {
   addDigimon() {
     console.log(this.digimon);
     this.digimonService.addPost(this.digimon);
+    this.router.navigate(['myDigimon'])
+  
   }
   DeleteDigimon(id:number){
     console.log(id);

@@ -5,8 +5,8 @@
   "
   bgColor="alert-info rounded-3 p-2 m-2"
 ></page-header>
-
-<mat-form-field class="example-form-field">
+ 
+<mat-form-field class="example-form-field center-text">
   <mat-label>שם הדיג'ימון</mat-label>
   <input matInput type="text" [(ngModel)]="digimonName" />
   @if (digimonName) {
@@ -31,6 +31,7 @@
 </button>
 <div>{{errorMessage}}</div>
 
+<div class="text-center">
   @if (digimon.id != 0) {
     @defer(on timer(500ms)){
   <h1>{{digimon.name}}</h1>
@@ -49,3 +50,4 @@
 }
 
 }
+</div>
