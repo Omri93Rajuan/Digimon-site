@@ -9,6 +9,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
+import { Router } from '@angular/router';
 
 
 
@@ -23,7 +24,7 @@ export class NewDigimonComponent {
   digimonForm!: FormGroup;
   digimon: Digimon = {id:0,name: '', img: '', level: '' };
 
-  constructor(private formBuilder: FormBuilder,private digimonService: DigimonService) { 
+  constructor(private formBuilder: FormBuilder,private digimonService: DigimonService, private router:Router) { 
     this.createDigimonForm();
     
   }
@@ -38,9 +39,9 @@ export class NewDigimonComponent {
   }
 
   addDigimon() {
-    
     this.digimon = this.digimonForm.value
     this.digimonService.addPost(this.digimon);
+
   }
 
 
