@@ -12,9 +12,8 @@ import { TopNavComponent } from './top-nav/top-nav.component';
   
 })
 export class HeaderComponent {
-  isSmallScreen = false;
+  isSmallScreen:boolean = false;
 
-  
   @HostListener('window:resize', ['$event'])
   onResize() {
     this.isSmallScreen = window.innerWidth < 768;
