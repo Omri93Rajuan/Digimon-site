@@ -1,14 +1,12 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatIconModule} from '@angular/material/icon';
-import { NavLinkComponent } from '../../components/nav-link/nav-link.component';
 import { HamburgerComponent } from './hamburger/hamburger.component';
-import { NgClass } from '@angular/common';
+import { TopNavComponent } from './top-nav/top-nav.component';
 
 @Component({
   selector: 'header',
   standalone: true,
-  imports: [MatToolbarModule,MatIconModule,NavLinkComponent,HamburgerComponent],
+  imports: [MatToolbarModule,TopNavComponent,HamburgerComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
   
