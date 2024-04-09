@@ -1,7 +1,9 @@
 import {
   Component,
+  DestroyRef,
   OnInit,
   WritableSignal,
+  computed,
   effect,
   signal,
 } from '@angular/core';
@@ -27,15 +29,22 @@ export class MyDigimonComponent  {
   digimons: WritableSignal<Digimon[]> = signal([]);
   errorMessage: string | undefined;
 
+
   constructor(private digimonService: DigimonService, private router: Router) {
-    this.digimonService.getAllDigimon().subscribe({
-      next: (digimons: Digimon[] | any) => {
+     effect(()=>{  
+       this.digimonService.getAllDigimon().subscribe({
+      
+      next: (digimons: Digimon[] ) => {  
         this.digimons.set(digimons);
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.message;
       },
-    });
+      
+    })
+})
+   
+
   }
 
   DeleteDigimon(id: number) {
@@ -50,6 +59,4 @@ export class MyDigimonComponent  {
       digimons.map((d) => (d.id === event.id ? event : d))
     );
   }
-
-
 }
