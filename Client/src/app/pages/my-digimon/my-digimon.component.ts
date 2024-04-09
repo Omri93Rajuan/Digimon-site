@@ -23,13 +23,20 @@ import { FormComponent } from '../../components/form/form.component';
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css',
 })
-export class MyDigimonComponent implements OnInit {
-  digimons: WritableSignal<Digimon[]> = signal([
-    { id: 0, name: '', img: '', level: '' },
-  ]);
+export class MyDigimonComponent  {
+  digimons: WritableSignal<Digimon[]> = signal([]);
   errorMessage: string | undefined;
 
-  constructor(private digimonService: DigimonService, private router: Router) {}
+  constructor(private digimonService: DigimonService, private router: Router) {
+    this.digimonService.getAllDigimon().subscribe({
+      next: (digimons: Digimon[] | any) => {
+        this.digimons.set(digimons);
+      },
+      error: (error: HttpErrorResponse) => {
+        this.errorMessage = error.message;
+      },
+    });
+  }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
@@ -44,14 +51,5 @@ export class MyDigimonComponent implements OnInit {
     );
   }
 
-  ngOnInit(): void {
-    this.digimonService.getAllDigimon().subscribe({
-      next: (digimons: Digimon[] | any) => {
-        this.digimons.set(digimons);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.errorMessage = error.message;
-      },
-    });
-  }
+
 }

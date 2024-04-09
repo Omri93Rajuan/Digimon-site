@@ -51,9 +51,9 @@ export class SearchDigimonComponent {
   }
   addDigimon() {
     console.log(this.digimon);
-    this.digimonService.addPost(this.digimon);
-    this.router.navigate(['myDigimon'])
-  
+    this.digimonService.addPost(this.digimon,() =>
+      this.router.navigate(['/myDigimon']));
+     
   }
   DeleteDigimon(id:number){
     console.log(id);

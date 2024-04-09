@@ -30,7 +30,7 @@ export class DigimonService {
     return this.http.get(`https://digimon-api.vercel.app/api/digimon/name/${name}`);
   }
 
-  addPost(digimonData:Digimon) {
+  addPost(digimonData:Digimon,CB:Function) {
     const digimon: Digimon = digimonData;
     digimon.id = Math.floor(Math.random() * 1000000); // יצירת ID אקראי
     this.http.post(
@@ -38,9 +38,7 @@ export class DigimonService {
       digimon
     )
     .subscribe({
-      next: () => {
-        // ... טיפול בהצלחה
-      },
+      next: CB(),
       error: (error: HttpErrorResponse) => {
         if (error.status === 201) {
           // ... המשך ביצוע פעולות

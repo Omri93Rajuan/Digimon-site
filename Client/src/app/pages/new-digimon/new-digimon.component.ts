@@ -40,7 +40,9 @@ export class NewDigimonComponent {
 
   addDigimon() {
     this.digimon = this.digimonForm.value
-    this.digimonService.addPost(this.digimon);
+    this.digimonService.addPost(this.digimon, () =>
+      this.router.navigate(['/myDigimon']));
+   
 
   }
 
