@@ -39,8 +39,7 @@ export class MyDigimonComponent  {
       },
       error: (error: HttpErrorResponse) => {
         this.errorMessage = error.message;
-      },
-      
+      }
     })
 })
    

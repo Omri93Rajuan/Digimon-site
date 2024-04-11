@@ -3,11 +3,12 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { HamburgerComponent } from './hamburger/hamburger.component';
 import { TopNavComponent } from './top-nav/top-nav.component';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'header',
   standalone: true,
-  imports: [MatToolbarModule,TopNavComponent,HamburgerComponent],
+  imports: [MatToolbarModule,TopNavComponent,HamburgerComponent,RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
   
