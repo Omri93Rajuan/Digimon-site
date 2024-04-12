@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 import { FormComponent } from '../../components/form/form.component';
+import { DigimonStateService } from '../../service/digimon-state.service';
 
 @Component({
   selector: 'app-my-digimon',
@@ -30,7 +31,7 @@ export class MyDigimonComponent  {
   errorMessage: string | undefined;
 
 
-  constructor(private digimonService: DigimonService, private router: Router) {
+  constructor(private digimonService: DigimonService, private DigimonsData:DigimonStateService) {
      effect(()=>{  
        this.digimonService.getAllDigimon().subscribe({
       

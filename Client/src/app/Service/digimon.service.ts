@@ -26,6 +26,7 @@ export class DigimonService {
 
   addPost(digimonData: Digimon, CB: Function) {
     const digimon: Digimon = digimonData;
+    
     digimon.id = Math.floor(Math.random() * 1000000); // יצירת ID אקראי
     this.http.post('http://localhost:8181/data', digimon).subscribe({
       next: () => {},
