@@ -7,7 +7,7 @@
 ></page-header>
 
 <div class="card-container">
-  @if (digimons() ) { @for (digimon of digimons(); track digimon.id ){
+  @if (curentData() ) { @for (digimon of curentData(); track digimon.id ){
 
   <mat-card class="card">
     <mat-card-header>
@@ -43,7 +43,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-           <app-form [id]="digimon.id" (digimonFormEvent)="handleEvent($event)" ></app-form>
+           <!-- <app-form [id]="digimon.id" (digimonFormEvent)="handleEvent($event)" ></app-form> -->
         </div>
         <div class="modal-footer">
         </div>

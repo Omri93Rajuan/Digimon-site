@@ -27,36 +27,40 @@ import { DigimonStateService } from '../../service/digimon-state.service';
   styleUrl: './my-digimon.component.css',
 })
 export class MyDigimonComponent  {
-  digimons: WritableSignal<Digimon[]> = signal([]);
+  // digimons: WritableSignal<Digimon[]> = signal([]);
   errorMessage: string | undefined;
-
+curentData = computed(()=>{return this.DigimonsData.digimonsData()})
 
   constructor(private digimonService: DigimonService, private DigimonsData:DigimonStateService) {
-     effect(()=>{  
-       this.digimonService.getAllDigimon().subscribe({
+//      effect(()=>{  
+//        this.digimonService.getAllDigimon().subscribe({
       
-      next: (digimons: Digimon[] ) => {  
-        this.digimons.set(digimons);
-      },
-      error: (error: HttpErrorResponse) => {
-        this.errorMessage = error.message;
-      }
-    })
-})
+//       next: (digimons: Digimon[] ) => {  
+//         // this.digimons.set(digimons);
+//         this.DigimonsData.setData(digimons);
+//         console.log(this.curentData());
+        
+
+//       },
+//       error: (error: HttpErrorResponse) => {
+//         this.errorMessage = error.message;
+//       }
+//     })
+// })
    
 
   }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
-    this.digimons.set(this.digimons().filter((digimon) => digimon.id !== id));
+    this.DigimonsData.setData(this.curentData().filter((digimon) => digimon.id !== id));
   }
 
-  handleEvent(event: any) {
-    console.log(event);
-    this.digimonService.editPost(event.id, event);
-    this.digimons.update((digimons) =>
-      digimons.map((d) => (d.id === event.id ? event : d))
-    );
-  }
+  // handleEvent(event: any) {
+  //   console.log(event);
+  //   this.digimonService.editPost(event.id, event);
+  //   this.digimons.update((curentData:any) =>
+  //     curentData.map((d) => (d.id === event.id ? event : d))
+  //   );
+  // }
 }
