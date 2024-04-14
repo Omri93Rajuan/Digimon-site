@@ -19,24 +19,17 @@ export class AppComponent {
   title = 'digimon-clinet';
   errorMessage: string | undefined;
 
-  constructor(private DS:DigimonService,  private DigimonsData:DigimonStateService){
-    effect(()=>{  
-      this.DS.getAllDigimon().subscribe({
+  constructor(private DS:DigimonService,  private DigimonsData:DigimonStateService){ }
+
+ngOnInit(){
+  this.DS.getAllDigimon().subscribe({
      
-     next: (digimons: Digimon[] ) => {  
-       // this.digimons.set(digimons);
-       this.DigimonsData.setData(digimons);
-       console.log(this.DigimonsData.digimonsData());
-       
-
-     },
-     error: (error: HttpErrorResponse) => {
-       this.errorMessage = error.message;
-     }
-   })
-})
-  
-  }
-
-
+    next: (digimons: Digimon[] ) => {  
+      this.DigimonsData.setData(digimons);
+    },
+    error: (error: HttpErrorResponse) => {
+      this.errorMessage = error.message;
+    }
+  })
+}
 }

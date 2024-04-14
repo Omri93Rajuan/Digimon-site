@@ -27,28 +27,10 @@ import { DigimonStateService } from '../../service/digimon-state.service';
   styleUrl: './my-digimon.component.css',
 })
 export class MyDigimonComponent  {
-  // digimons: WritableSignal<Digimon[]> = signal([]);
   errorMessage: string | undefined;
 curentData = computed(()=>{return this.DigimonsData.digimonsData()})
 
   constructor(private digimonService: DigimonService, private DigimonsData:DigimonStateService) {
-//      effect(()=>{  
-//        this.digimonService.getAllDigimon().subscribe({
-      
-//       next: (digimons: Digimon[] ) => {  
-//         // this.digimons.set(digimons);
-//         this.DigimonsData.setData(digimons);
-//         console.log(this.curentData());
-        
-
-//       },
-//       error: (error: HttpErrorResponse) => {
-//         this.errorMessage = error.message;
-//       }
-//     })
-// })
-   
-
   }
 
   DeleteDigimon(id: number) {
