@@ -1,9 +1,6 @@
 import {
   Component,
-  DestroyRef,
-  OnInit,
   WritableSignal,
-  computed,
   effect,
   signal,
 } from '@angular/core';
@@ -12,12 +9,9 @@ import { Digimon } from '../../digimon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 
-import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 import { FormComponent } from '../../components/form/form.component';
-import { DigimonStateService } from '../../service/digimon-state.service';
 
 @Component({
   selector: 'app-my-digimon',
@@ -28,21 +22,28 @@ import { DigimonStateService } from '../../service/digimon-state.service';
 })
 export class MyDigimonComponent  {
   errorMessage: string | undefined;
-curentData = computed(()=>{return this.DigimonsData.digimonsData()})
+  digimonsData: WritableSignal<Digimon[]> = signal([]);
 
-  constructor(private digimonService: DigimonService, private DigimonsData:DigimonStateService) {
+
+  constructor(private digimonService: DigimonService) {
+    effect(()=>{
+this.digimonService.getAllDigimon().subscribe((data)=>{
+this.digimonsData.set(data)
+
+})
+    })
   }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
-    this.DigimonsData.setData(this.curentData().filter((digimon) => digimon.id !== id));
+    this.digimonsData.set(this.digimonsData().filter((digimon) => digimon.id !== id));
   }
 
-  // handleEvent(event: any) {
-  //   console.log(event);
-  //   this.digimonService.editPost(event.id, event);
-  //   this.digimons.update((curentData:any) =>
-  //     curentData.map((d) => (d.id === event.id ? event : d))
-  //   );
-  // }
+  handleEvent(event: any) {
+    console.log(event);
+    this.digimonService.editPost(event.id, event);
+    this.digimonsData.update((curentData:any) =>
+      curentData.map((d:Digimon) => (d.id === event.id ? event : d))
+    );
+  }
 }

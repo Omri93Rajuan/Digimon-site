@@ -10,7 +10,6 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 import { Router } from '@angular/router';
-import { DigimonStateService } from '../../service/digimon-state.service';
 
 @Component({
   selector: 'app-new-digimon',
@@ -35,7 +34,6 @@ export class NewDigimonComponent {
     private formBuilder: FormBuilder,
     private digimonService: DigimonService,
     private router: Router,
-    private DigimonsData:DigimonStateService
   ) {
     this.createDigimonForm();
   }

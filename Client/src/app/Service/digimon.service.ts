@@ -3,14 +3,13 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Digimon } from '../digimon';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
-import { DigimonStateService } from './digimon-state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DigimonService {
 
-  constructor(private http: HttpClient, private router: Router,private DigimonSate: DigimonStateService) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   getAllDigimon(): Observable<Digimon[]> {
     return this.http.get<Digimon[]>('http://localhost:8181/data');
@@ -44,10 +43,7 @@ export class DigimonService {
   }
   deletePost(id: number) {
     this.http.delete(`http://localhost:8181/data/${id}`).subscribe({
-      next: () => {
-       this.DigimonSate.getData()
-       console.log(this.DigimonSate.digimonsData());
-       
+      next: () => {       
       },
       error: (error: HttpErrorResponse) => {
         if (error.status === 201) {
