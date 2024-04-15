@@ -1,5 +1,6 @@
 import {
   Component,
+  DestroyRef,
   WritableSignal,
   effect,
   signal,
@@ -20,30 +21,30 @@ import { FormComponent } from '../../components/form/form.component';
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css',
 })
-export class MyDigimonComponent  {
+export class MyDigimonComponent {
   errorMessage: string | undefined;
   digimonsData: WritableSignal<Digimon[]> = signal([]);
 
-
   constructor(private digimonService: DigimonService) {
-    effect(()=>{
-this.digimonService.getAllDigimon().subscribe((data)=>{
-this.digimonsData.set(data)
-
-})
-    })
+    effect(() => {
+      this.digimonService.getAllDigimon().subscribe((data) => {
+        this.digimonsData.set(data);
+      });
+    });
   }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
-    this.digimonsData.set(this.digimonsData().filter((digimon) => digimon.id !== id));
+    this.digimonsData.set(
+      this.digimonsData().filter((digimon) => digimon.id !== id)
+    );
   }
 
   handleEvent(event: any) {
     console.log(event);
     this.digimonService.editPost(event.id, event);
-    this.digimonsData.update((curentData:any) =>
-      curentData.map((d:Digimon) => (d.id === event.id ? event : d))
+    this.digimonsData.update((digimons) =>
+      digimons.map((d) => (d.id === event.id ? event : d))
     );
   }
 }
