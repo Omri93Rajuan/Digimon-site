@@ -8,7 +8,6 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root',
 })
 export class DigimonService {
-
   constructor(private http: HttpClient, private router: Router) {}
 
   getAllDigimon(): Observable<Digimon[]> {
@@ -26,14 +25,13 @@ export class DigimonService {
 
   addPost(digimonData: Digimon, CB: Function) {
     const digimon: Digimon = digimonData;
-    
+
     digimon.id = Math.floor(Math.random() * 1000000); // יצירת ID אקראי
     this.http.post('http://localhost:8181/data', digimon).subscribe({
       next: () => {},
       error: (error: HttpErrorResponse) => {
         if (error.status === 201) {
           CB();
-          
         } else {
           console.error('שגיאה בשרת:', error);
           // ... הצגת הודעת שגיאה למשתמש
@@ -43,8 +41,7 @@ export class DigimonService {
   }
   deletePost(id: number) {
     this.http.delete(`http://localhost:8181/data/${id}`).subscribe({
-      next: () => {       
-      },
+      next: () => {},
       error: (error: HttpErrorResponse) => {
         if (error.status === 201) {
           // ... המשך ביצוע פעולות

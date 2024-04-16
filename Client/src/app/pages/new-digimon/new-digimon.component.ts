@@ -33,7 +33,7 @@ export class NewDigimonComponent {
   constructor(
     private formBuilder: FormBuilder,
     private digimonService: DigimonService,
-    private router: Router,
+    private router: Router
   ) {
     this.createDigimonForm();
   }
@@ -49,8 +49,8 @@ export class NewDigimonComponent {
 
   addDigimon() {
     this.digimon = this.digimonForm.value;
-    this.digimonService.addPost(this.digimon, () =>{
-      this.router.navigate(['/myDigimon'])}
-    );
+    this.digimonService.addPost(this.digimon, () => {
+      this.router.navigate(['/myDigimon']);
+    });
   }
 }
