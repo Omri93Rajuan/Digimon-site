@@ -27,10 +27,10 @@ export class MyDigimonComponent {
 
   constructor(private digimonService: DigimonService) {
     effect(() => {
+      this.digimonsData();
       this.digimonService.getAllDigimon().subscribe((data) => {
         this.digimonsData.set(data);
       });
-      this.digimonsData();
     });
   }
 
