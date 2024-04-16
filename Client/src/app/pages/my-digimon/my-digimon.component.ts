@@ -27,7 +27,9 @@ export class MyDigimonComponent {
 
   constructor(private digimonService: DigimonService) {
     effect(() => {
-      this.digimonsData();
+      if (this.digimonsData().length === 0) {
+        this.digimonsData();
+      }
       this.digimonService.getAllDigimon().subscribe((data) => {
         this.digimonsData.set(data);
       });
