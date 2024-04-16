@@ -5,7 +5,7 @@
   "
   bgColor="alert-info rounded-3 p-2 m-2"
 ></page-header>
- 
+
 <mat-form-field class="example-form-field center-text">
   <mat-label>שם הדיג'ימון</mat-label>
   <input matInput type="text" [(ngModel)]="digimonName" />
@@ -19,7 +19,6 @@
     <mat-icon>close</mat-icon>
   </button>
   }
-
 </mat-form-field>
 <button
   class="btn"
@@ -29,25 +28,22 @@
 >
   !חפש דיג'ימון
 </button>
-<div>{{errorMessage}}</div>
+<div>{{ errorMessage }}</div>
 
 <div class="text-center">
-  @if (digimon.id != 0) {
-    @defer(on timer(500ms)){
-  <h1>{{digimon.name}}</h1>
-  <img src="{{digimon.img}}" alt="{{digimon.name}}">
-  <p>{{digimon.level}}</p>
+  @if (digimon.id != 0) { @defer(on timer(500ms)){
+  <h1>{{ digimon.name }}</h1>
+  <img src="{{ digimon.img }}" alt="{{ digimon.name }}" />
+  <p>{{ digimon.level }}</p>
   <button
-  class="btn"
-  style="background-color: #ebc55a; margin-right: 10px"
-  mat-raised-button
-  (click)="addDigimon()"
->
-קחי אותי!
-</button>
-}@placeholder {
-  <mat-spinner></mat-spinner> 
-}
-
-}
+    class="btn"
+    style="background-color: #ebc55a; margin-right: 10px"
+    mat-raised-button
+    (click)="addDigimon()"
+  >
+    קחי אותי!
+  </button>
+  }@placeholder {
+  <mat-spinner></mat-spinner>
+  } }
 </div>

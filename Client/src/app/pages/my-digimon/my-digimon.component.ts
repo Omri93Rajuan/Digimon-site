@@ -30,14 +30,12 @@ export class MyDigimonComponent {
       this.digimonService.getAllDigimon().subscribe((data) => {
         this.digimonsData.set(data);
       });
+      this.digimonsData();
     });
   }
 
   DeleteDigimon(id: number) {
     this.digimonService.deletePost(id);
-    this.digimonsData.set(
-      this.digimonsData().filter((digimon) => digimon.id !== id)
-    );
   }
 
   handleEvent(event: any) {
