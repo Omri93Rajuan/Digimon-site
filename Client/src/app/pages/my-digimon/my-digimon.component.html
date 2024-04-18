@@ -25,7 +25,8 @@
         type="button"
         class="btn btn-primary"
         data-bs-toggle="modal"
-        attr.data-bs-target="#{{digimon.id}}">
+        attr.data-bs-target="#{{ digimon.id }}"
+      >
         עריכה
       </button>
       <button class="btn btn-secondary" (click)="DeleteDigimon(digimon.id)">
@@ -34,28 +35,38 @@
     </mat-card-actions>
   </mat-card>
 
-  @defer()  {
-  <div class="modal fade" id={{digimon.id}} tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  @defer() {
+  <div
+    class="modal fade"
+    id="{{ digimon.id }}"
+    tabindex="1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalLabel">עריכת דיג'ימון</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
         </div>
         <div class="modal-body">
-           <app-form [id]="digimon.id" (digimonFormEvent)="handleEvent($event)" ></app-form>
+          <app-form
+            [id]="digimon.id"
+            (digimonFormEvent)="handleEvent($event)"
+          ></app-form>
         </div>
-        <div class="modal-footer">
-        </div>
+        <div class="modal-footer"></div>
       </div>
     </div>
   </div>
-  }
-  @placeholder {
-    <div></div>
-  }
-
-  } } @else() {
+  } @placeholder {
+  <div></div>
+  } } } @else() {
   <h1 class="AS">sorrrrrryyyyy bro</h1>
   }
 </div>
