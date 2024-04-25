@@ -1,19 +1,18 @@
+<mat-toolbar
+  color="primary"
+  class="center-text bg-digimon"
+  routerLink="/"
+  routerLinkActive="top-nav-active"
+>
+  <mat-slide-toggle>Slide me!</mat-slide-toggle>
 
-   <mat-toolbar color="primary" class="center-text bg-digimon" routerLink="/myDigimon" 
-   routerLinkActive="top-nav-active">
-    <img
-      src="/assets/digimonHeader.png"
-      alt=""
-      width= 500px;
-      />
-  </mat-toolbar>
-  <div class="nav-bar" style="background-color: #ebc55a">
-  @switch (isSmallScreen()) {
-    @case (false) {
-<top-nav></top-nav>
-    }
-    @case (true) {
-  <hamburger ></hamburger>
-    }
-}
+  <img src="/assets/digimonHeader.png" alt="" width="500px;" />
+</mat-toolbar>
+
+<div class="nav-bar" style="background-color: #ebc55a">
+  @switch (isSmallScreen()) { @case (false) {
+  <top-nav></top-nav>
+  } @case (true) {
+  <hamburger></hamburger>
+  } }
 </div>

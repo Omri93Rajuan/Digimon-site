@@ -6,10 +6,8 @@ import { FooterComponent } from './footer/footer.component';
 @Component({
   selector: 'layout',
   standalone: true,
-  imports: [HeaderComponent,MainComponent,FooterComponent],
+  imports: [HeaderComponent, MainComponent, FooterComponent],
   templateUrl: './layout.component.html',
-  styleUrl: './layout.component.css'
+  styleUrl: './layout.component.css',
 })
-export class LayoutComponent {
-
-}
+export class LayoutComponent {}
