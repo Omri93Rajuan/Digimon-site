@@ -9,7 +9,7 @@ import { DigimonService } from '../../service/digimon.service';
 import { Digimon } from '../../digimon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 import { FormComponent } from '../../components/form/form.component';
@@ -17,7 +17,13 @@ import { FormComponent } from '../../components/form/form.component';
 @Component({
   selector: 'app-my-digimon',
   standalone: true,
-  imports: [MatCardModule, MatButtonModule, PageHeaderComponent, FormComponent],
+  imports: [
+    MatCardModule,
+    MatButtonModule,
+    PageHeaderComponent,
+    FormComponent,
+    MatProgressSpinnerModule,
+  ],
   templateUrl: './my-digimon.component.html',
   styleUrl: './my-digimon.component.css',
 })
