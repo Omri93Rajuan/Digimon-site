@@ -10,6 +10,7 @@ import { PageHeaderComponent } from '../../components/page-header/page-header.co
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { Router } from '@angular/router';
+import { MatCard } from '@angular/material/card';
 
 Navigator;
 @Component({
@@ -24,6 +25,7 @@ Navigator;
     PageHeaderComponent,
     MatProgressSpinnerModule,
     MatGridListModule,
+    MatCard,
   ],
   templateUrl: './search-digimon.component.html',
   styleUrl: './search-digimon.component.css',

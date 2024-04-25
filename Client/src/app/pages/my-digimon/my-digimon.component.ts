@@ -29,7 +29,6 @@ export class MyDigimonComponent {
     effect(() => {
       if (this.digimonsData().length === 0) {
         this.digimonsData();
-        console.log(this.digimonsData());
       }
       this.digimonService.getAllDigimon().subscribe((data) => {
         this.digimonsData.set(data);
