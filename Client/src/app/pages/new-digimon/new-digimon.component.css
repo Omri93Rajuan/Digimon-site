@@ -5,10 +5,9 @@
 }
 
 .digimon-card {
-  background-color: #EBC55A;
+  background-color: #ebc55a;
   max-width: 250px;
 }
-
 
 mat-form-field {
   margin: 10px;
@@ -31,8 +30,13 @@ button {
   margin: 10px;
   font-size: 16px;
   padding: 5px 10px;
-
 }
-mat-form-filed{
-  text-align: center
+mat-form-filed {
+  text-align: center;
+}
+
+.error-text {
+  color: red;
+  text-align: center;
+  background-color: black;
 }

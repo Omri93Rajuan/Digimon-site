@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms'; // ייבוא חסר
+import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // ייבוא חסר
 import { ReactiveFormsModule } from '@angular/forms';
 import { DigimonService } from '../../service/digimon.service';
 import { Digimon } from '../../digimon';
@@ -41,9 +41,12 @@ export class NewDigimonComponent {
   createDigimonForm() {
     this.digimonForm = this.formBuilder.group({
       id: 0,
-      name: [''],
-      img: [''],
-      level: [''],
+      name: ['', [Validators.required, Validators.minLength(4)]],
+      img: [
+        '',
+        [Validators.required, Validators.pattern('(https?://.*.(?:png|jpg))')],
+      ],
+      level: ['', [Validators.required]],
     });
   }
 
