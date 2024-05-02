@@ -4,13 +4,13 @@ import { SearchDigimonComponent } from '../app/pages/search-digimon/search-digim
 import { AboutComponent } from '../app/pages/about/about.component';
 import { MyDigimonComponent } from '../app/pages/my-digimon/my-digimon.component';
 import { NewDigimonComponent } from '../app/pages/new-digimon/new-digimon.component';
+import { ErrorPageComponent } from '../app/pages/error-page/error-page.component';
 
 export const routes: Routes = [
-    { path:'',component: AboutComponent},
-    { path:'about',component: AboutComponent},
-    { path:'myDigimon',component: MyDigimonComponent},
-    { path:'newDigimon',component: NewDigimonComponent},
-    { path:'searchDigimon',component: SearchDigimonComponent},
-
-    
+  { path: '', component: AboutComponent },
+  { path: 'about', component: AboutComponent },
+  { path: 'myDigimon', component: MyDigimonComponent },
+  { path: 'newDigimon', component: NewDigimonComponent },
+  { path: 'searchDigimon', component: SearchDigimonComponent },
+  { path: '**', component: ErrorPageComponent },
 ];
