@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms'; // ייבוא חסר
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DigimonService } from '../../service/digimon.service';
 import { Digimon } from '../../digimon';
