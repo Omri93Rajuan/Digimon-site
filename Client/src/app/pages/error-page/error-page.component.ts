@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { MatCardModule } from '@angular/material/card';
+import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 
 @Component({
   selector: 'app-error-page',
   standalone: true,
-  imports: [RouterModule, MatCardModule],
+  imports: [RouterModule, PageHeaderComponent],
   templateUrl: './error-page.component.html',
   styleUrl: './error-page.component.css',
 })
