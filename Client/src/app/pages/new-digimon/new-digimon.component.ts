@@ -10,7 +10,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { PageHeaderComponent } from '../../components/page-header/page-header.component';
 import { Router } from '@angular/router';
-
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-new-digimon',
   standalone: true,
@@ -33,7 +33,8 @@ export class NewDigimonComponent {
   constructor(
     private formBuilder: FormBuilder,
     private digimonService: DigimonService,
-    private router: Router
+    private router: Router,
+    private _snackBar: MatSnackBar
   ) {
     this.createDigimonForm();
   }
@@ -53,7 +54,14 @@ export class NewDigimonComponent {
   addDigimon() {
     this.digimon = this.digimonForm.value;
     this.digimonService.addPost(this.digimon, () => {
+      this.openSnackBar('Digimon added successfully!');
       this.router.navigate(['/myDigimon']);
+    });
+  }
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Close', {
+      duration: 3000, // 3 seconds
     });
   }
 }
