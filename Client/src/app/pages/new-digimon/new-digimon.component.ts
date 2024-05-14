@@ -54,14 +54,14 @@ export class NewDigimonComponent {
   addDigimon() {
     this.digimon = this.digimonForm.value;
     this.digimonService.addPost(this.digimon, () => {
-      this.openSnackBar('Digimon added successfully!');
+      // this.openSnackBar('Digimon added successfully!');
       this.router.navigate(['/myDigimon']);
     });
   }
 
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'Close', {
-      duration: 3000, // 3 seconds
-    });
-  }
+  // openSnackBar(message: string) {
+  //   this._snackBar.open(message, 'Close', {
+  //     duration: 3000,
+  //   });
+  // }
 }

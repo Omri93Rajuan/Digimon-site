@@ -3,13 +3,22 @@ import { Injectable, WritableSignal, signal } from '@angular/core';
 import { Digimon } from '../digimon';
 import { Router } from '@angular/router';
 import { Observable, Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DigimonService {
-  constructor(private http: HttpClient, private router: Router) {}
-
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private _snackBar: MatSnackBar
+  ) {}
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Close', {
+      duration: 3000,
+    });
+  }
   getAllDigimon(): Observable<Digimon[]> {
     return this.http.get<Digimon[]>('http://localhost:8181/data');
   }
@@ -34,7 +43,7 @@ export class DigimonService {
           CB();
         } else {
           console.error('שגיאה בשרת:', error);
-          // ... הצגת הודעת שגיאה למשתמש
+          this.openSnackBar("הדיג'ימון לא נשמר יש בעיה בשרת");
         }
       },
     });
