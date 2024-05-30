@@ -22,6 +22,7 @@ export class DigimonService {
   getAllDigimon(): Observable<Digimon[]> {
     return this.http.get<Digimon[]>('http://localhost:8181/data');
   }
+
   getDigimonById(id: any): Observable<any> {
     return this.http.get<any>(`http://localhost:8181/data/${id}`);
   }
