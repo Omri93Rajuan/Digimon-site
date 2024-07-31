@@ -81,7 +81,7 @@ export class ThreeDCharacterComponent implements OnInit, AfterViewInit {
 
     this.renderer.render(this.scene, this.camera);
   }
-
+//responsive view
   @HostListener('window:resize', ['$event'])
   onResize(event: Event) {
     this.updateRendererSize();
