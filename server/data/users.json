@@ -1,0 +1,50 @@
+[
+  {
+    "fullName": "Rafael Cohen",
+    "email": "rafaelcohen@example.com",
+    "password": "password123",
+    "phone": "0521234567",
+    "isAdmin": true,
+    "image": "https://randomuser.me/api/portraits/men/1.jpg"
+  },
+  {
+    "fullName": "Yaakov Greenberg",
+    "email": "yaakovgreenberg@example.com",
+    "password": "mypassword456",
+    "phone": "0537654321",
+    "isAdmin": false,
+    "image": "https://randomuser.me/api/portraits/men/2.jpg"
+  },
+  {
+    "fullName": "Mordechai Levy",
+    "email": "mordechai@example.com",
+    "password": "secret789",
+    "phone": "0549876543",
+    "isAdmin": false,
+    "image": "https://randomuser.me/api/portraits/men/3.jpg"
+  },
+  {
+    "fullName": "Shlomo Ben-David",
+    "email": "shlomo@example.com",
+    "password": "pass1234",
+    "phone": "0528765432",
+    "isAdmin": true,
+    "image": "https://randomuser.me/api/portraits/men/4.jpg"
+  },
+  {
+    "fullName": "Yitzhak Shami",
+    "email": "yitzhak@example.com",
+    "password": "strongpass",
+    "phone": "0543219876",
+    "isAdmin": false,
+    "image": "https://randomuser.me/api/portraits/men/5.jpg"
+  },
+  {
+    "fullName": "Eliyahu Mizrahi",
+    "email": "eliyahu@example.com",
+    "password": "mypassword890",
+    "phone": "0534567890",
+    "isAdmin": false,
+    "image": "https://randomuser.me/api/portraits/men/6.jpg"
+  }
+]
