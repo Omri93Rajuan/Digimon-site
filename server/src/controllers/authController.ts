@@ -1,6 +1,6 @@
 import express, { IRouter, Request, Response } from "express";
 import { login, logout } from "../services/authService";
-import { handleError } from "../../utils/ErrorHandle";
+import { handleError } from "../utils/ErrorHandle";
 
 const router: IRouter = express.Router();
 
@@ -9,7 +9,7 @@ router.post("/login", async (req: Request, res: Response): Promise<void> => {
     const user = req.body;
     const RealUser = await login(user, res);
     res.json(RealUser);
-  } catch (error: any) {    
+  } catch (error: any) {
     console.error(error.message);
     handleError(res, error.status, error.message);
   }
