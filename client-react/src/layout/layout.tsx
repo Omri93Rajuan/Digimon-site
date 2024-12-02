@@ -1,13 +1,14 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Header from "./header/Header";
+import Main from "./main/Main";
+import Footer from "./footer/Footer";
 
-export default function Footer() {
+export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <footer>
-      <p>Created by O.R &copy; {new Date().getFullYear()}</p>
-      <button>
-        <Link to={"/users"}>Go Home KId! </Link>
-      </button>
-    </footer>
+    <>
+      <Header />
+      <Main children={children} />
+      <Footer />
+    </>
   );
 }
