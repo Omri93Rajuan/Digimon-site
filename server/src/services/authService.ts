@@ -1,6 +1,6 @@
 import { CookieOptions, Response } from "express";
-import { comparePassword } from "../../helpers/bcrypt";
-import { generateAuthToken } from "../../helpers/jwt";
+import { comparePassword } from "../helpers/bcrypt";
+import { generateAuthToken } from "../middlewares/jwt";
 import Users from "../models/user";
 import { handleBadRequest } from "../utils/ErrorHandle";
 

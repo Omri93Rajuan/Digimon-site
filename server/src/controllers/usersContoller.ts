@@ -5,7 +5,7 @@ import {
   getUserById,
   updateUser,
   deleteUser,
-} from "../services/dataService";
+} from "../services/usersService";
 import { handleError } from "../utils/ErrorHandle";
 
 const router: IRouter = express.Router();
