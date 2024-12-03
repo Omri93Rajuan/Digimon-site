@@ -12,10 +12,11 @@ const getAllAnimes = async () => {
 
 const getAnimeById = async (animeId: string) => {
   try {
-    const anime = await Anime.findById(animeId);
+    const anime = await Anime.findById(animeId).populate("Miki");
     if (!anime) {
       throw new Error("Anime not found");
     }
+
     return anime;
   } catch (error: any) {
     return handleBadRequest("MongoDB", error);

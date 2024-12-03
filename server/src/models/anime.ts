@@ -6,7 +6,7 @@ export interface IAnime extends Document {
   releaseYear: number;
   season: number;
   episode: number;
-  digimons: { digimon: string; id: string }[];
+  digimons: { id: string }[];
 }
 
 const animeSchema: Schema = new mongoose.Schema(
@@ -15,6 +15,7 @@ const animeSchema: Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     description: {
       type: String,
       required: true,
@@ -33,14 +34,9 @@ const animeSchema: Schema = new mongoose.Schema(
     },
     digimons: [
       {
-        digimon: {
-          type: String,
-          required: true,
-        },
         id: {
           type: Schema.Types.ObjectId,
           ref: "Digimon",
-          required: true,
         },
       },
     ],
@@ -49,5 +45,4 @@ const animeSchema: Schema = new mongoose.Schema(
     timestamps: true,
   }
 );
-
 export default mongoose.model<IAnime>("Anime", animeSchema);

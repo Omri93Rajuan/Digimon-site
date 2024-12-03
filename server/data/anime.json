@@ -5,20 +5,7 @@
     "releaseYear": 2000,
     "season": 1,
     "episode": 0,
-    "digimons": [
-      {
-        "digimon": "Agumon",
-        "id": "62b83c7a1234567890abcdef"
-      },
-      {
-        "digimon": "Gabumon",
-        "id": "62b83c7a1234567890abcdef"
-      },
-      {
-        "digimon": "Patamon",
-        "id": "62b83c7a1234567890abcdef"
-      }
-    ]
+    "Miki": "62b83c7a1234567890abcdef"
   },
   {
     "name": "Digimon Adventure tri. - Chapter 1: Reunion",
@@ -26,19 +13,6 @@
     "releaseYear": 2015,
     "season": 6,
     "episode": 1,
-    "digimons": [
-      {
-        "digimon": "Agumon",
-        "id": "62b83c7a1234567890abcdef"
-      },
-      {
-        "digimon": "Gabumon",
-        "id": "62b83c7a1234567890abcdef"
-      },
-      {
-        "digimon": "Patamon",
-        "id": "62b83c7a1234567890abcdef"
-      }
-    ]
+    "Miki": "62b83c7a1234567890abcdef"
   }
 ]
