@@ -25,7 +25,10 @@ export default function Link_nav_bar({ to, innerText, img }: Props) {
   };
 
   return (
-    <div className="nav-item-container" style={navItemContainerStyle}>
+    <div
+      className="nav-item-container rubik-doodle-shadow-regular  "
+      style={navItemContainerStyle}
+    >
       <img src={img} alt={"this is a " + img + " picture"} style={imgStyle} />
       <NavLink to={to} style={linkStyle}>
         {innerText}
