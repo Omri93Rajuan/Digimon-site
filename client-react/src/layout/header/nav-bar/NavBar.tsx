@@ -4,6 +4,7 @@ import digimon1 from "../../../assets/1.png";
 import digimon2 from "../../../assets/2.png";
 import digimon3 from "../../../assets/3.png";
 import digimon4 from "../../../assets/4.png";
+import digimon5 from "../../../assets/5.png";
 
 export default function NavBar() {
   const navBar = {
@@ -29,7 +30,10 @@ export default function NavBar() {
           <Link_nav_bar to="/" innerText="דיג'ימונים" img={digimon3} />
         </li>
         <li>
-          <Link_nav_bar to="/" innerText="חנות" img={digimon4} />
+          <Link_nav_bar to="/" innerText="צפייה ישירה" img={digimon4} />
+        </li>
+        <li>
+          <Link_nav_bar to="/" innerText="חנות" img={digimon5} />
         </li>
       </ul>
     </nav>
