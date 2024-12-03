@@ -1,0 +1,13 @@
+.header {
+  background-image: url("../../assets/bgHeader.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100%;
+  text-align: center;
+}
+
+.logo {
+  max-width: 500px;
+  margin: 0 auto;
+}
