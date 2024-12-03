@@ -7,7 +7,7 @@ interface Props {
   img: string;
 }
 
-export default function Link_nav_bar({ to, innerText, img }: Props) {
+export default function Link_nav_bar({ to, innerText, img = "" }: Props) {
   const navItemContainerStyle = {
     display: "flex",
     alignItems: "center",
