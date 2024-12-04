@@ -7,19 +7,9 @@ import digimon4 from "../../../assets/4.png";
 import digimon5 from "../../../assets/5.png";
 
 export default function NavBar() {
-  const navBar = {
-    backgroundColor: "#EBC55A",
-    display: "flex",
-    justifyContent: "space-evenly",
-    alignItems: "center",
-    listStyle: "none",
-    gap: "20px",
-    margin: 0,
-    padding: 0,
-  };
   return (
-    <nav className="nav-bar">
-      <ul className="nav-menu" style={navBar}>
+    <nav className="bg-yellow-400">
+      <ul className="flex justify-evenly items-center list-none gap-5 m-0 p-0">
         <li>
           <Link_nav_bar to="/" innerText="בית" img={digimon1} />
         </li>
@@ -30,10 +20,11 @@ export default function NavBar() {
           <Link_nav_bar to="/" innerText="דיג'ימונים" img={digimon3} />
         </li>
         <li>
-          <Link_nav_bar to="/" innerText="צפייה ישירה" img={digimon4} />
-        </li>
-        <li>
-          <Link_nav_bar to="/search" innerText="חיפוש" img={digimon5} />
+          <Link_nav_bar
+            to="/livewatch"
+            innerText="צפייה ישירה"
+            img={digimon4}
+          />
         </li>
         <li>
           <Link_nav_bar to="/page" innerText="מאתגר" img={digimon5} />

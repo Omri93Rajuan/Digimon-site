@@ -6,9 +6,9 @@ export default function useFetch<T>(): any {
 
   const BASE_URL = "http://localhost:7700/";
   //   ----------GET method----------
-  const GET = async () => {
+  const GET = async (endpoint: string) => {
     try {
-      const response = await fetch(BASE_URL, {
+      const response = await fetch(`${BASE_URL}${endpoint}`, {
         credentials: "include",
       });
       if (!response.ok) {
@@ -48,7 +48,7 @@ export default function useFetch<T>(): any {
   };
 
   //   ----------GetByCall method----------
-  const GetByCall = async (page, limit) => {
+  const GetByCall = async (page: string, limit: string) => {
     try {
       const response = await fetch(
         `${BASE_URL}users/getUsersByCall?page=${page}&limit=${limit}`,

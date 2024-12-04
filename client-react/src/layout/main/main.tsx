@@ -7,7 +7,7 @@ interface Props {
 export default function Main({ children }: Props) {
   return (
     <>
-      <main>{children}</main>
+      <main className="flex-grow">{children}</main>
     </>
   );
 }

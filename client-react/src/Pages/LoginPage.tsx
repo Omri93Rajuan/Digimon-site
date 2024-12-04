@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import { Link, useNavigate } from "react-router-dom";
-import wallpaper from "../assets/10.png";
-import Link_nav_bar from "../components/Link_nav_bar";
+import wallpaper from "../assets/12.png";
+
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -24,7 +24,7 @@ export default function LoginPage() {
           <img
             src={wallpaper}
             alt="Placeholder Image"
-            className="object-contain max-w-[90%] max-h-[90%] mx-auto"
+            className="object-contain max-w-[50%] max-h-[20%] mx-auto"
           />
         </div>
 

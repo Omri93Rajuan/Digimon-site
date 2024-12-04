@@ -7,6 +7,8 @@ export interface IAnime extends Document {
   season: number;
   episode: number;
   digimons: { id: string }[];
+  image: string;
+  link: string;
 }
 
 const animeSchema: Schema = new mongoose.Schema(
@@ -40,9 +42,24 @@ const animeSchema: Schema = new mongoose.Schema(
         },
       },
     ],
+    image: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (v: string) {
+          return /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(v);
+        },
+        message: "הקישור אינו חוקי",
+      },
+    },
   },
   {
     timestamps: true,
   }
 );
+
 export default mongoose.model<IAnime>("Anime", animeSchema);
