@@ -1,19 +1,8 @@
 export default function Footer() {
-  const footerStyle: React.CSSProperties = {
-    backgroundColor: "#EBC55A",
-    color: "black",
-    padding: "20px",
-    textAlign: "center",
-  };
-
-  const textStyle: React.CSSProperties = {
-    fontSize: "20px",
-  };
-
   return (
-    <footer style={footerStyle}>
-      <p style={textStyle}>
-        כל הזכויות שמורות לד'יגימון ישראל &copy; {new Date().getFullYear()}
+    <footer className="bg-customGold text-black py-5 text-center">
+      <p className="text-lg font-medium">
+        כל הזכויות שמורות לדיג'ימון ישראל &copy; {new Date().getFullYear()}
       </p>
     </footer>
   );
