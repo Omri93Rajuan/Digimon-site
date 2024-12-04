@@ -47,9 +47,26 @@ export default function useFetch<T>(): any {
     }
   };
 
-  //   ----------PUT method----------
-
+  //   ----------GetByCall method----------
+  const GetByCall = async (page, limit) => {
+    try {
+      const response = await fetch(
+        `${BASE_URL}users/getUsersByCall?page=${page}&limit=${limit}`,
+        {
+          credentials: "include",
+        }
+      );
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(`HTTP error! ${errorData.error.message}`);
+      }
+      const result = await response.json();
+      setData(result);
+    } catch (error: unknown) {
+      setError((error as Error).message || "An unknown error occurred.");
+    }
+  };
   //   ----------DELETE method----------
 
-  return { data, error, GET, POST };
+  return { data, error, GET, POST, GetByCall };
 }
