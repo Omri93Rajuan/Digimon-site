@@ -4,7 +4,6 @@ export interface IUser extends Document {
   fullName: string;
   email: string;
   password: string;
-  phone: string;
   isAdmin: boolean;
   image?: string;
   createdAt: Date;
@@ -30,14 +29,9 @@ const userSchema: Schema = new mongoose.Schema(
       required: true,
       minlength: 6,
     },
-    phone: {
-      type: String,
-      required: true,
-      match: [/^0[2-9]\d{7,8}$/, "אנא הכנס מספר טלפון תקין"],
-    },
     isAdmin: {
       type: Boolean,
-      default: false,
+      default: false, // ברירת מחדל היא false
     },
     image: {
       type: String,

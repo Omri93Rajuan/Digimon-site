@@ -33,7 +33,10 @@ export default function NavBar() {
           <Link_nav_bar to="/" innerText="צפייה ישירה" img={digimon4} />
         </li>
         <li>
-          <Link_nav_bar to="/" innerText="חנות" img={digimon5} />
+          <Link_nav_bar to="/search" innerText="חיפוש" img={digimon5} />
+        </li>
+        <li>
+          <Link_nav_bar to="/page" innerText="מאתגר" img={digimon5} />
         </li>
       </ul>
     </nav>

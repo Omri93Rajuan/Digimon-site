@@ -79,4 +79,30 @@ const deleteUser = async (userId: string) => {
     return handleBadRequest("MongoDB", error);
   }
 };
-export { getAllUsers, getUserById, addUser, updateUser, deleteUser };
+
+const getUsersByCall = async (page: number = 1, limit: number = 10) => {
+  try {
+    const skip = (page - 1) * limit;
+
+    const users = await User.find().skip(skip).limit(limit);
+
+    const totalUsers = await User.countDocuments();
+
+    return {
+      users,
+      totalPages: Math.ceil(totalUsers / limit),
+      currentPage: page,
+      totalUsers,
+    };
+  } catch (error: any) {
+    return handleBadRequest("MongoDB", error);
+  }
+};
+export {
+  getAllUsers,
+  getUserById,
+  addUser,
+  updateUser,
+  deleteUser,
+  getUsersByCall,
+};

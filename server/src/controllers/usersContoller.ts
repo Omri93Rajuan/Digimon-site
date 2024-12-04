@@ -5,6 +5,7 @@ import {
   getUserById,
   updateUser,
   deleteUser,
+  getUsersByCall,
 } from "../services/usersService";
 import { handleError } from "../utils/ErrorHandle";
 
@@ -19,6 +20,20 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
   }
 });
 
+router.get(
+  "/getUsersByCall",
+  async (req: Request, res: Response): Promise<void> => {
+    try {
+      const page = parseInt(req.query.page as string) || 1;
+      const limit = parseInt(req.query.limit as string) || 10;
+
+      const result = await getUsersByCall(page, limit);
+      res.json(result);
+    } catch (error: any) {
+      handleError(res, error.status || 500, error.message);
+    }
+  }
+);
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
     const user = await getUserById(req.params.id);

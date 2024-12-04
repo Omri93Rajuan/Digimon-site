@@ -3,15 +3,12 @@
     "fullName": "Taichi Yagami",
     "email": "taichi@example.com",
     "password": "password123",
-    "phone": "0501234567",
-    "isAdmin": false,
     "image": "taichi-avatar.jpg"
   },
   {
     "fullName": "Yamato Ishida",
     "email": "yamato@example.com",
     "password": "qwerty456",
-    "phone": "0528765432",
     "isAdmin": true,
     "image": "yamato-avatar.jpg"
   },
@@ -19,8 +16,6 @@
     "fullName": "Hikari Yagami",
     "email": "hikari@example.com",
     "password": "abc123def",
-    "phone": "0537891234",
-    "isAdmin": false,
     "image": "hikari-avatar.jpg"
   }
 ]

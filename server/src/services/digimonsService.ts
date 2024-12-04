@@ -12,7 +12,7 @@ const getAllDigimons = async () => {
 
 const getDigimonById = async (digimonId: string) => {
   try {
-    const digimon = await Digimon.findById(digimonId);
+    const digimon = await Digimon.findById(digimonId).populate("evolutions");
     if (!digimon) {
       throw new Error("Digimon not found");
     }
