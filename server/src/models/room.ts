@@ -3,7 +3,7 @@ import mongoose, { Document, Schema } from "mongoose";
 export interface IMessage {
   userName: string;
   message: string;
-  timeStamp: Date;
+  timeStamp: string;
 }
 
 export interface IRoom extends Document {
@@ -21,7 +21,7 @@ const messagesSchma: Schema = new mongoose.Schema({
     required: true,
   },
   timeStamp: {
-    type: Date,
+    type: String,
     required: true,
   },
 });

@@ -6,7 +6,7 @@ const socket = io("http://localhost:7700", {
 });
 
 interface Message {
-  username: string;
+  userName: string;
   message: string;
   timestamp: string;
 }
@@ -16,33 +16,39 @@ export default function SocketPage() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [roomName, setRoomName] = useState("");
   const [currentRoom, setCurrentRoom] = useState("");
-  const [username, setUsername] = useState("");
+  const [userName, setUsername] = useState("");
 
   useEffect(() => {
-    socket.on("receiveMessage", (messageData: Message) => {
-      setMessages((prevMessages) => [...prevMessages, messageData]);
+    socket.on("loadMessages", (messageData: Message[]) => {
+      setMessages(messageData);
     });
+
+    socket.on("receiveMessage", (newMessage: Message) => {
+      setMessages((prevMessages) => [...prevMessages, newMessage]);
+    });
+
     return () => {
+      socket.off("loadMessages");
       socket.off("receiveMessage");
     };
   }, []);
 
   const sendMessage = () => {
-    if (message.trim() && currentRoom && username) {
+    if (message.trim() && currentRoom && userName) {
       socket.emit("sendMessageToRoom", {
         roomName: currentRoom,
         message,
-        username,
+        userName,
       });
       setMessage("");
     }
   };
 
   const joinRoom = () => {
-    if (roomName.trim() && username.trim()) {
+    if (roomName.trim() && userName.trim()) {
       socket.emit("joinRoom", roomName);
       setCurrentRoom(roomName);
-      setMessages([]);
+      setMessages([]); // Reset messages when switching rooms
     } else {
       alert("Please enter both room name and username");
     }
@@ -56,7 +62,7 @@ export default function SocketPage() {
         <div className="space-y-2">
           <input
             type="text"
-            value={username}
+            value={userName}
             onChange={(e) => setUsername(e.target.value)}
             placeholder="Enter Your Username"
             className="w-full p-2 border rounded"
@@ -83,7 +89,7 @@ export default function SocketPage() {
           <div className="border h-64 overflow-y-auto mb-2 p-2">
             {messages.map((msg, index) => (
               <div key={index} className="mb-1 p-1 bg-gray-100 rounded">
-                <strong>{msg.username}</strong>: {msg.message}
+                <strong>{msg.userName}</strong>: {msg.message}
                 <small className="text-gray-500 ml-2 text-xs">
                   {new Date(msg.timestamp).toLocaleTimeString()}
                 </small>

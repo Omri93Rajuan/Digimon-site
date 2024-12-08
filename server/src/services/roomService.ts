@@ -1,5 +1,5 @@
 import { handleBadRequest } from "../utils/ErrorHandle";
-import Room, { IRoom } from "../models/room";
+import Room, { IMessage, IRoom } from "../models/room";
 
 const getAllRooms = async () => {
   try {
@@ -14,7 +14,7 @@ const getRoomByName = async (roomName: string) => {
   try {
     const anime = await Room.findOne({ roomName: roomName });
     if (!anime) {
-      throw new Error("Anime not found");
+      throw new Error("Room not found");
     }
 
     return anime;
@@ -23,34 +23,20 @@ const getRoomByName = async (roomName: string) => {
   }
 };
 
-const updateAnime = async (animeId: string, updateData: Partial<IRoom>) => {
+const updateRoom = async (roomName: string, updateData: IMessage) => {
   try {
-    const existingAnime = await Room.findById(animeId);
-    if (!existingAnime) {
-      throw new Error("Anime not found");
+    const existingRoom = await Room.findOne({ roomName: roomName });
+    if (!existingRoom) {
+      throw new Error("Room not found");
     }
 
-    const updatedAnime = await Room.findByIdAndUpdate(animeId, updateData, {
-      new: true,
-      runValidators: true,
-    });
-
-    return updatedAnime;
-  } catch (error: any) {
-    return handleBadRequest("MongoDB", error);
+    existingRoom.messages.push(updateData);
+    await existingRoom.save();
+    return existingRoom;
+  } catch (error) {
+    console.error("Error in updateRoom:", error);
+    throw error;
   }
 };
 
-const deleteAnime = async (animeId: string) => {
-  try {
-    const deletedAnime = await Room.findByIdAndDelete(animeId);
-    if (!deletedAnime) {
-      throw new Error("Anime not found");
-    }
-    return { message: "Anime deleted successfully" };
-  } catch (error: any) {
-    return handleBadRequest("MongoDB", error);
-  }
-};
-
-export { getRoomByName, updateAnime, deleteAnime };
+export { getRoomByName, updateRoom };

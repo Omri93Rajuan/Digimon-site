@@ -1,9 +1,6 @@
 import express from "express";
-
 import { Server } from "socket.io"; // Import socket.io Server
 import http from "http"; // Import http server module
-import { getRoomByName } from "./src/services/roomService";
-
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
@@ -11,6 +8,8 @@ import "dotenv/config";
 import router from "./src/router/router";
 import loadInitialData from "./src/initailData";
 import chalk from "chalk";
+
+import mainSocket from "./src/sockets/mainSocket";
 
 const app = express();
 
@@ -41,53 +40,8 @@ mongoose
   .catch((error) => {
     console.error(chalk.red("Error connecting to MongoDB:", error));
   });
-// ----------------------------------------------
-// io.on("connection", (socket) => {
-//   console.log(`A user connected ${socket.id} `);
 
-//   socket.on("sendMessage", (message) => {
-//     io.emit("receiveMessage", message);
-//   });
-
-//   socket.on("disconnect", () => {
-//     console.log(`Usear disconnected ${socket.id}`);
-//   });
-// });
-// ----------------------------------------------
-// ----------------------------------------------
-io.on("connection", (socket) => {
-  console.log(`A user connected ${socket.id}`);
-
-  socket.on("joinRoom", async (roomName) => {
-    try {
-      if (!roomName) {
-        console.error("Invalid room name");
-        return;
-      }
-      const room = await getRoomByName(roomName);
-      console.log(room);
-
-      socket.join(roomName);
-    } catch (error) {
-      console.log(error);
-    }
-
-    socket.on("sendMessageToRoom", (data) => {
-      const { roomName, message, username } = data;
-
-      io.to(roomName).emit("receiveMessage", {
-        username,
-        message,
-        timestamp: new Date().toISOString(),
-      });
-    });
-  });
-
-  socket.on("disconnect", () => {
-    console.log(`User disconnected ${socket.id}`);
-  });
-});
-// ----------------------------------------------
+mainSocket(io);
 
 server.listen(process.env.PORT || 8000, () => {
   console.log(
