@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import User, { IUser } from "./models/user";
 import Digimon, { IDigimon } from "./models/digimon";
 import Anime, { IAnime } from "./models/anime";
+import Room, { IRoom } from "./models/room";
 
 /**
  * Encrypts passwords for all users in the provided data array.
@@ -41,18 +42,24 @@ async function loadInitialData() {
     const movieData: IAnime[] = JSON.parse(
       fs.readFileSync("./data/anime.json", "utf8")
     );
+    const roomData: IRoom[] = JSON.parse(
+      fs.readFileSync("./data/room.json", "utf8")
+    );
 
     // Check if the collections are empty
     if (
       (await User.countDocuments()) === 0 &&
       (await Digimon.countDocuments()) === 0 &&
-      (await Anime.countDocuments()) === 0
+      (await Anime.countDocuments()) === 0 &&
+      (await Room.countDocuments()) === 0
     ) {
       // Encrypt passwords before inserting user data into the database
       const encryptedUserData = await encryptPasswords(userData);
       await User.insertMany(encryptedUserData);
       await Digimon.insertMany(digimonData);
       await Anime.insertMany(movieData);
+      await Room.insertMany(roomData);
+
       console.log("Initial data has been added to the database.");
     } else {
       console.log("Data already exists in the database.");
@@ -61,5 +68,4 @@ async function loadInitialData() {
     console.error("Error loading initial data:", error);
   }
 }
-
 export default loadInitialData;

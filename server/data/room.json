@@ -1,0 +1,22 @@
+[
+  {
+    "roomName": "Singal and Happy",
+    "messages": [
+      {
+        "userName": "Miki",
+        "message": "Welcome to my Channel",
+        "timeStamp": "08/12/2024"
+      }
+    ]
+  },
+  {
+    "roomName": "Just Mearrid",
+    "messages": [
+      {
+        "userName": "Eliya",
+        "message": "Welcome to my Channel",
+        "timeStamp": "08/12/2024"
+      }
+    ]
+  }
+]

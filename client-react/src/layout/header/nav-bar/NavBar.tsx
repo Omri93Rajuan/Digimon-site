@@ -14,7 +14,7 @@ export default function NavBar() {
           <Link_nav_bar to="/" innerText="בית" img={digimon1} />
         </li>
         <li>
-          <Link_nav_bar to="/" innerText="אנימה" img={digimon2} />
+          <Link_nav_bar to="/io" innerText="'סוקטים'" img={digimon2} />
         </li>
         <li>
           <Link_nav_bar to="/" innerText="דיג'ימונים" img={digimon3} />
