@@ -8,7 +8,7 @@ const socket = io("http://localhost:7700", {
 interface Message {
   userName: string;
   message: string;
-  timestamp: string;
+  timeStamp: string;
 }
 
 export default function SocketPage() {
@@ -35,10 +35,12 @@ export default function SocketPage() {
 
   const sendMessage = () => {
     if (message.trim() && currentRoom && userName) {
+      const timeStamp = Date.now().toLocaleString();
       socket.emit("sendMessageToRoom", {
         roomName: currentRoom,
         message,
         userName,
+        timeStamp,
       });
       setMessage("");
     }
@@ -91,7 +93,7 @@ export default function SocketPage() {
               <div key={index} className="mb-1 p-1 bg-gray-100 rounded">
                 <strong>{msg.userName}</strong>: {msg.message}
                 <small className="text-gray-500 ml-2 text-xs">
-                  {new Date(msg.timestamp).toLocaleTimeString()}
+                  {msg.timeStamp}
                 </small>
               </div>
             ))}

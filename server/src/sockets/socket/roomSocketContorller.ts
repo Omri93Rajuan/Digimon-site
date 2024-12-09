@@ -28,21 +28,22 @@ const roomSocket = (io: Server, socket: Socket) => {
 
   socket.on("sendMessageToRoom", async (data) => {
     try {
-      const { roomName, message, userName } = data;
-      if (!roomName || !message || !userName) {
+      const { roomName, message, userName, timeStamp } = data;
+
+      if (!roomName || !message || !userName || !timeStamp) {
         return;
       }
 
       await updateRoom(roomName, {
         message,
         userName,
-        timeStamp: new Date().toISOString(),
+        timeStamp,
       });
 
       io.to(roomName).emit("receiveMessage", {
         userName,
         message,
-        timestamp: new Date().toISOString(),
+        timeStamp,
       });
     } catch (error) {
       console.error("Error in sendMessageToRoom:", error);
