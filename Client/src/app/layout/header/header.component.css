@@ -1,9 +1,0 @@
-.example-spacer {
-  flex: 1 1 auto;
-}
-
-.bg-digimon {
-  background: url("/assets/bgHeader.png")
-    50% 50% no-repeat;
-    min-height: 150px;
-}

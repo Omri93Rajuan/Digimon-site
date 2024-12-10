@@ -6,7 +6,9 @@ export interface IAnime extends Document {
   releaseYear: number;
   season: number;
   episode: number;
-  digimons: { digimon: string; id: string }[];
+  digimons: { id: string }[];
+  image: string;
+  link: string;
 }
 
 const animeSchema: Schema = new mongoose.Schema(
@@ -15,6 +17,7 @@ const animeSchema: Schema = new mongoose.Schema(
       type: String,
       required: true,
     },
+
     description: {
       type: String,
       required: true,
@@ -33,17 +36,26 @@ const animeSchema: Schema = new mongoose.Schema(
     },
     digimons: [
       {
-        digimon: {
-          type: String,
-          required: true,
-        },
         id: {
           type: Schema.Types.ObjectId,
           ref: "Digimon",
-          required: true,
         },
       },
     ],
+    image: {
+      type: String,
+      required: true,
+    },
+    link: {
+      type: String,
+      required: true,
+      validate: {
+        validator: function (v: string) {
+          return /^(https?|chrome):\/\/[^\s$.?#].[^\s]*$/.test(v);
+        },
+        message: "הקישור אינו חוקי",
+      },
+    },
   },
   {
     timestamps: true,
