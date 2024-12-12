@@ -11,6 +11,10 @@ export default {
         customPink: {
           DEFAULT: "#F2A0BE", // צבע ברירת מחדל
         },
+        customGrenn: {
+          DEFAULT: " #197352",
+          600: "#197500", // צבע ברירת מחדל
+        },
       },
     },
   },
