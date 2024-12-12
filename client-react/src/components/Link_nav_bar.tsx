@@ -17,7 +17,7 @@ export default function Link_nav_bar({ to, innerText, img = "" }: Props) {
     textDecoration: "none",
     fontSize: "20px",
     cursor: "pointer",
-    color: "black",
+    color: "#663F8C",
   };
 
   const imgStyle = {
@@ -26,7 +26,7 @@ export default function Link_nav_bar({ to, innerText, img = "" }: Props) {
 
   return (
     <div
-      className="nav-item-container rubik-doodle-shadow-regular  "
+      className="nav-item-container rubik-doodle-shadow-regular"
       style={navItemContainerStyle}
     >
       <img src={img} alt={"this is a " + img + " picture"} style={imgStyle} />

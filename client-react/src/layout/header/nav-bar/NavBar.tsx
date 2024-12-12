@@ -5,29 +5,27 @@ import digimon2 from "../../../assets/2.png";
 import digimon3 from "../../../assets/3.png";
 import digimon4 from "../../../assets/4.png";
 import digimon5 from "../../../assets/5.png";
+import Logo from "../logo/Logo";
 
 export default function NavBar() {
   return (
-    <nav className="bg-yellow-400">
+    <nav className="bg-customPink">
       <ul className="flex justify-evenly items-center list-none gap-5 m-0 p-0">
         <li>
-          <Link_nav_bar to="/" innerText="בית" img={digimon1} />
+          <Link_nav_bar to="/" innerText="Home" img={digimon1} />
         </li>
         <li>
-          <Link_nav_bar to="/io" innerText="'סוקטים'" img={digimon2} />
+          <Link_nav_bar to="/io" innerText="About" img={digimon2} />
+        </li>
+        <div className="flex justify-center py-4 ml-10">
+          <Logo />
+        </div>
+
+        <li>
+          <Link_nav_bar to="/" innerText="Store" img={digimon3} />
         </li>
         <li>
-          <Link_nav_bar to="/" innerText="דיג'ימונים" img={digimon3} />
-        </li>
-        <li>
-          <Link_nav_bar
-            to="/livewatch"
-            innerText="צפייה ישירה"
-            img={digimon4}
-          />
-        </li>
-        <li>
-          <Link_nav_bar to="/page" innerText="מאתגר" img={digimon5} />
+          <Link_nav_bar to="/page" innerText="Cart" img={digimon5} />
         </li>
       </ul>
     </nav>

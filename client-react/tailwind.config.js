@@ -8,9 +8,9 @@ export default {
           DEFAULT: "#EBC55A", // צבע ברירת מחדל
           600: "#D4A947", // גרסה כהה יותר
         },
-      },
-      customFink: {
-        DEFAULT: "#F2A0BE",
+        customPink: {
+          DEFAULT: "#F2A0BE", // צבע ברירת מחדל
+        },
       },
     },
   },

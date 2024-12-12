@@ -2,7 +2,6 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  direction: rtl;
 }
 body {
   font-family: "Rubik", sans-serif;
@@ -16,7 +15,7 @@ body {
   font-family: "Rubik", sans-serif;
   font-optical-sizing: auto;
   font-weight: 200;
-  font-style: normal;
+  font-style: inherit;
 }
 .handjet {
   font-family: "Handjet", sans-serif;
