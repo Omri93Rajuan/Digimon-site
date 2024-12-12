@@ -1,8 +1,8 @@
 import express, { IRouter, NextFunction, Request, Response } from "express";
-import usersContoller from "../controllers/usersContoller";
-import digimonsController from "../controllers/digimonsController";
-import animeController from "../controllers/animeController";
-import authController from "../controllers/authController";
+import usersContoller from "../controllers/users.contoller";
+import digimonsController from "../controllers/product.controller";
+import animeController from "../controllers/categort.controller";
+import authController from "../controllers/auth.controller";
 
 import { verifyAdmin, verifyUser } from "../middlewares/jwt";
 import { handleError } from "../utils/ErrorHandle";

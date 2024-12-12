@@ -1,5 +1,5 @@
 import { Server, Socket } from "socket.io";
-import { getRoomByName, updateRoom } from "../../services/roomService";
+import { getRoomByName, updateRoom } from "../../services/room.service";
 
 const roomSocket = (io: Server, socket: Socket) => {
   socket.on("joinRoom", async (roomName) => {

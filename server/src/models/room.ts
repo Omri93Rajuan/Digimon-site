@@ -20,7 +20,7 @@ const messagesSchma: Schema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  timeStamp: {
+  timestamp: {
     type: String,
     required: true,
   },

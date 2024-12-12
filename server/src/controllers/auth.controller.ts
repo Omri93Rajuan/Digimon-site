@@ -1,5 +1,5 @@
 import express, { IRouter, Request, Response } from "express";
-import { login, logout } from "../services/authService";
+import { login, logout } from "../services/auth.service";
 import { handleError } from "../utils/ErrorHandle";
 
 const router: IRouter = express.Router();

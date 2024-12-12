@@ -1,0 +1,51 @@
+[
+  {
+    "user": "507f191e810c19729de860ea",
+    "products": [
+      {
+        "product": "507f191e810c19729de860ea",
+        "quantity": 2,
+        "price": 20
+      },
+      {
+        "product": "507f191e810c19729de860ea",
+        "quantity": 1,
+        "price": 50
+      }
+    ],
+    "totalPrice": 90,
+    "createdAt": "2024-12-12T12:00:00Z",
+    "updatedAt": "2024-12-12T12:00:00Z"
+  },
+  {
+    "user": "507f191e810c19729de860ea",
+    "products": [
+      {
+        "product": "507f191e810c19729de860ea",
+        "quantity": 3,
+        "price": 15
+      }
+    ],
+    "totalPrice": 45,
+    "createdAt": "2024-12-12T12:10:00Z",
+    "updatedAt": "2024-12-12T12:10:00Z"
+  },
+  {
+    "user": "507f191e810c19729de860ea",
+    "products": [
+      {
+        "product": "507f191e810c19729de860ea",
+        "quantity": 1,
+        "price": 20
+      },
+      {
+        "product": "507f191e810c19729de860ea",
+        "quantity": 2,
+        "price": 50
+      }
+    ],
+    "totalPrice": 120,
+    "createdAt": "2024-12-12T12:20:00Z",
+    "updatedAt": "2024-12-12T12:20:00Z"
+  }
+]

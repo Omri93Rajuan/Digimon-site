@@ -1,21 +1,29 @@
 [
   {
-    "fullName": "Taichi Yagami",
-    "email": "taichi@example.com",
-    "password": "password123",
-    "image": "taichi-avatar.jpg"
-  },
-  {
-    "fullName": "Yamato Ishida",
-    "email": "yamato@example.com",
-    "password": "qwerty456",
+    "fullName": "Yossi Cohen",
+    "email": "yossi@domain.com",
+    "password": "hashed_password_123",
     "isAdmin": true,
-    "image": "yamato-avatar.jpg"
+    "image": "yossi-avatar.jpg",
+    "orders": [],
+    "balance": 100
   },
   {
-    "fullName": "Hikari Yagami",
-    "email": "hikari@example.com",
-    "password": "abc123def",
-    "image": "hikari-avatar.jpg"
+    "fullName": "Michal Levi",
+    "email": "michal@domain.com",
+    "password": "hashed_password_456",
+    "isAdmin": false,
+    "image": "michal-avatar.jpg",
+    "orders": [],
+    "balance": 50
+  },
+  {
+    "fullName": "David Marciano",
+    "email": "david@domain.com",
+    "password": "hashed_password_789",
+    "isAdmin": false,
+    "image": "david-avatar.jpg",
+    "orders": [],
+    "balance": 200
   }
 ]

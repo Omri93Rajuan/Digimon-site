@@ -1,18 +1,18 @@
 import express, { IRouter, Request, Response } from "express";
 import {
-  addDigimon,
-  getAllDigimons,
-  getDigimonById,
-  updateDigimon,
-  deleteDigimon,
-} from "../services/digimonsService";
+  addProduct,
+  getAllProducts,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+} from "../services/product.service";
 import { handleError } from "../utils/ErrorHandle";
 
 const router: IRouter = express.Router();
 
 router.get("/", async (req: Request, res: Response): Promise<void> => {
   try {
-    const digimons = await getAllDigimons();
+    const digimons = await getAllProducts();
     res.json(digimons);
   } catch (error: any) {
     handleError(res, error.status || 404, error.message);
@@ -21,7 +21,7 @@ router.get("/", async (req: Request, res: Response): Promise<void> => {
 
 router.get("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const digimon = await getDigimonById(req.params.id);
+    const digimon = await getProductById(req.params.id);
     res.json(digimon);
   } catch (error: any) {
     handleError(res, error.status || 404, error.message);
@@ -30,7 +30,7 @@ router.get("/:id", async (req: Request, res: Response): Promise<void> => {
 
 router.post("/", async (req: Request, res: Response): Promise<void> => {
   try {
-    const digimon = await addDigimon(req.body);
+    const digimon = await addProduct(req.body);
     res.status(201).json(digimon);
   } catch (error: any) {
     handleError(res, error.status || 400, error.message);
@@ -39,7 +39,7 @@ router.post("/", async (req: Request, res: Response): Promise<void> => {
 
 router.patch("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const updatedDigimon = await updateDigimon(req.params.id, req.body);
+    const updatedDigimon = await updateProduct(req.params.id, req.body);
     res.json(updatedDigimon);
   } catch (error: any) {
     handleError(res, error.status || 400, error.message);
@@ -48,7 +48,7 @@ router.patch("/:id", async (req: Request, res: Response): Promise<void> => {
 
 router.delete("/:id", async (req: Request, res: Response): Promise<void> => {
   try {
-    const result = await deleteDigimon(req.params.id);
+    const result = await deleteProduct(req.params.id);
     res.json(result);
   } catch (error: any) {
     handleError(res, error.status || 404, error.message);

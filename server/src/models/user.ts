@@ -1,14 +1,5 @@
-import mongoose, { Document, Schema } from "mongoose";
-
-export interface IUser extends Document {
-  fullName: string;
-  email: string;
-  password: string;
-  isAdmin: boolean;
-  image?: string;
-  createdAt: Date;
-  updatedAt: Date;
-}
+import mongoose, { Schema } from "mongoose";
+import { IUser } from "../types/users.interface";
 
 const userSchema: Schema = new mongoose.Schema(
   {
@@ -31,19 +22,25 @@ const userSchema: Schema = new mongoose.Schema(
     },
     isAdmin: {
       type: Boolean,
-      default: false, // ברירת מחדל היא false
+      default: false,
     },
     image: {
       type: String,
       default: "default-avatar.jpg",
     },
+    orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
+    balance: {
+      type: Number,
+      default: 0,
+      min: [0, "Balance cannot be negative"],
+    },
   },
+
   {
     timestamps: true,
   }
 );
 
-// מסתיר את הסיסמה כשמחזירים את המשתמש
 userSchema.methods.toJSON = function () {
   const userObject = this.toObject();
   delete userObject.password;

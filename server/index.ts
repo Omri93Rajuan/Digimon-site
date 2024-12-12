@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import mongoose from "mongoose";
 import "dotenv/config";
 import router from "./src/router/router";
-import loadInitialData from "./src/initailData";
+import loadInitialData from "./src/seed/initailData";
 import chalk from "chalk";
 
 import mainSocket from "./src/sockets/mainSocket";

@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Digimon T-shirt",
+    "description": "A comfortable T-shirt featuring the iconic Agumon from Digimon.",
+    "price": 25.99,
+    "category": "507f191e810c19729de860ea",
+    "stock": 150,
+    "images": [
+      "https://example.com/images/digimon-tshirt-1.jpg",
+      "https://example.com/images/digimon-tshirt-2.jpg"
+    ]
+  },
+  {
+    "name": "Digimon Adventure: The Storybook",
+    "description": "A fun-filled storybook for children, featuring the adventures of the DigiDestined.",
+    "price": 14.99,
+    "category": "507f191e810c19729de860ea",
+    "stock": 200,
+    "images": [
+      "https://example.com/images/digimon-storybook-1.jpg",
+      "https://example.com/images/digimon-storybook-2.jpg"
+    ]
+  },
+  {
+    "name": "Agumon Doll",
+    "description": "A soft and cuddly Agumon plush doll, perfect for Digimon fans.",
+    "price": 19.99,
+    "category": "507f191e810c19729de860ea",
+    "stock": 120,
+    "images": [
+      "https://example.com/images/agumon-plush-1.jpg",
+      "https://example.com/images/agumon-plush-2.jpg"
+    ]
+  }
+]
