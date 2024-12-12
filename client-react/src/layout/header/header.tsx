@@ -5,10 +5,7 @@ import bg from "../../assets/bgHeader.png";
 
 export default function Header() {
   return (
-    <header
-      className="bg-cover bg-center bg-no-repeat w-full text-center"
-      style={{ backgroundImage: `url('${bg}')` }}
-    >
+    <header className="bg-cover bg-center bg-no-repeat w-full text-center">
       <TopNavBar />
       <div className="mx-auto max-w-xl p-4">
         <Logo />

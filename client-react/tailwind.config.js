@@ -9,6 +9,9 @@ export default {
           600: "#D4A947", // גרסה כהה יותר
         },
       },
+      customFink: {
+        DEFAULT: "#F2A0BE",
+      },
     },
   },
   plugins: [],
