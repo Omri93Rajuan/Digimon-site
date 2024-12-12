@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../../../assets/digimonHeader.png";
+import logo from "../../../assets/logo.png";
 
 export default function Logo() {
   return (
