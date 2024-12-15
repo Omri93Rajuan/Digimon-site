@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import { Link, useNavigate } from "react-router-dom";
-import wallpaper from "../assets/12.png";
+import wallpaper from "../assets/15.png"; // התמונה שלך
+import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -12,85 +12,80 @@ export default function LoginPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const UserLogin = { email, password };
-    const findUser = await POST("auth/login", UserLogin);
+    await POST("auth/login", UserLogin);
     navigate("/");
   };
 
   return (
-    <>
-      <div className="bg-gray-100 flex lg:flex-row flex-col justify-center items-center min-h-screen">
-        {/* <!-- Left: Image --> */}
-        <div className="w-1/2 hidden lg:block">
-          <img
-            src={wallpaper}
-            alt="Placeholder Image"
-            className="object-contain max-w-[50%] max-h-[20%] mx-auto"
-          />
-        </div>
-
-        {/* <!-- Right: Login Form --> */}
-        <div className="lg:p-36 md:p-52 sm:p-20 p-8 w-full lg:w-1/2 flex-grow">
-          <h1 className="text-2xl font-semibold mb-4">התחברות</h1>
-          <form onSubmit={handleSubmit}>
-            {/* <!-- Username Input --> */}
-            <div className="mb-4">
-              <label htmlFor="username" className="block text-gray-600">
-                אימייל
-              </label>
-              <input
-                type="text"
-                id="username"
-                name="username"
-                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-            </div>
-            {/* <!-- Password Input --> */}
-            <div className="mb-4">
-              <label htmlFor="password" className="block text-gray-600">
-                סיסמה
-              </label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </div>
-            {/* <!-- Remember Me Checkbox --> */}
-            <div className="mb-4 flex items-center">
-              <input
-                type="checkbox"
-                id="remember"
-                name="remember"
-                className="text-blue-500"
-              />
-              <label htmlFor="remember" className="text-gray-600 ml-2">
-                זכור אותי{" "}
-              </label>
-            </div>
-            {/* <!-- Forgot Password Link --> */}
-            <div className="mb-6 text-blue-500">
-              <a href="#" className="hover:underline">
-                שכחת את הסיסמה?
-              </a>
-            </div>
-            <button
-              type="submit"
-              className="bg-customGold hover:bg-customGold-600 text-white font-semibold rounded-md py-2 px-4 w-full"
+    <div className="flex min-h-screen justify-center items-center">
+      <div className="bg-white bg-opacity-80 p-8 rounded-3xl shadow-lg w-full max-w-lg flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-center text-customBlue-600 mb-6">
+          LOGIN
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-5 w-full">
+          {/* Username */}
+          <div>
+            <label
+              htmlFor="username"
+              className="block text-gray-700 font-medium mb-1"
             >
-              כניסה!
-            </button>
-          </form>
-          {/* <!-- Sign up  Link --> */}
-          <div className="mt-6 text-blue-500 text-center">
-            <Link to={"/register"} className="hover:underline">
-              להרשמה לחץ כאן
-            </Link>
+              USERNAME
+            </label>
+            <input
+              id="username"
+              type="text"
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
+              onChange={(e) => setEmail(e.target.value)}
+            />
           </div>
-        </div>
+          {/* Password */}
+          <div>
+            <label
+              htmlFor="password"
+              className="block text-gray-700 font-medium mb-1"
+            >
+              PASSWORD
+            </label>
+            <input
+              id="password"
+              type="password"
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </div>
+          {/* Remember Me */}
+          <div className="flex items-center">
+            <input
+              type="checkbox"
+              id="remember"
+              className="text-pink-600 focus:ring-0"
+            />
+            <label
+              htmlFor="remember"
+              className="ml-2 text-gray-600 font-medium"
+            >
+              Remember Me
+            </label>
+          </div>
+          <button
+            type="submit"
+            className="w-full bg-pink-600 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-pink-700 transition-transform transform hover:scale-105 mt-5"
+          >
+            LOGIN
+          </button>
+        </form>
       </div>
-    </>
+
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center mt-6 lg:mt-0">
+        <img
+          src={wallpaper}
+          alt="Wallpaper"
+          className="max-w-xs lg:max-w-lg h-auto"
+        />
+      </div>
+    </div>
   );
 }

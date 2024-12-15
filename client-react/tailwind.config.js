@@ -8,13 +8,13 @@ export default {
           DEFAULT: "#EBC55A",
           600: "#D4A947",
         },
-        customPink: {
-          DEFAULT: "#F2A0BE",
+        customBlue: {
+          DEFAULT: "#8FB6D9",
           600: "#F24B78",
         },
-        customGrenn: {
-          DEFAULT: " #197352",
-          600: "#197500",
+        customPink: {
+          DEFAULT: "#F2A7CA",
+          600: "#103D38",
         },
       },
     },

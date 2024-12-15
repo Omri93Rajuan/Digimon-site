@@ -1,11 +1,9 @@
 import NavBar from "./nav-bar/NavBar";
-import TopNavBar from "./top-nav-bar/TopNavBar";
 
 export default function Header() {
   return (
-    <header>
+    <header className="border-b border-gray-300 shadow-md">
       <NavBar />
-      <TopNavBar />
     </header>
   );
 }

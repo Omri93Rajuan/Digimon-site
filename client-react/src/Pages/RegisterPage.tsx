@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import wallpaper from "../assets/13.png";
+import wallpaper from "../assets/14.png";
 import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
@@ -17,77 +17,82 @@ export default function RegisterPage() {
 
     const newUser = { fullName, email, password, phone, isAdmin };
     const successfullyAddedUser = await POST("users", newUser);
-    if (successfullyAddedUser) navigate("/login"); // ניתוב לדף התחברות לאחר הצלחה
+    if (successfullyAddedUser) navigate("/login");
   };
 
   return (
-    <div className="bg-gray-100 flex lg:flex-row flex-col-reverse justify-center items-center min-h-screen p-4 lg:p-0">
-      {/* <!-- Left: Register Form --> */}
-      <div className="lg:p-12 p-6 w-full lg:w-1/2">
-        <h1 className="text-3xl font-semibold mb-6">הרשמה</h1>
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* <!-- Full Name Input --> */}
+    <div className=" flex min-h-screen justify-center items-center">
+      {/* Image Section */}
+      <div className="w-full lg:w-1/2 flex justify-center items-center mt-6 lg:mt-0">
+        <img
+          src={wallpaper}
+          alt="Wallpaper"
+          className="max-w-xs lg:max-w-lg h-auto"
+        />
+      </div>
+
+      {/* Form Section */}
+      <div className="bg-white bg-opacity-80 p-8 rounded-3xl shadow-lg w-full max-w-lg flex flex-col items-center">
+        <h1 className="text-4xl font-bold text-center text-customBlue-600 mb-6">
+          REGISTER
+        </h1>
+        <form onSubmit={handleSubmit} className="space-y-5 w-full">
+          {/* Full Name */}
           <div>
             <label
               htmlFor="fullName"
-              className="block text-gray-700 text-base font-medium"
+              className="block text-gray-700 font-medium mb-1"
             >
-              שם מלא
+              FULL NAME
             </label>
             <input
               id="fullName"
               type="text"
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
               onChange={(e) => setFullName(e.target.value)}
             />
           </div>
-          {/* <!-- Email Input --> */}
+          {/* Email */}
           <div>
             <label
               htmlFor="email"
-              className="block text-gray-700 text-base font-medium"
+              className="block text-gray-700 font-medium mb-1"
             >
-              אימייל
+              EMAIL
             </label>
             <input
               id="email"
-              type="text"
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              type="email"
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          {/* <!-- Password Input --> */}
+          {/* Password */}
           <div>
             <label
               htmlFor="password"
-              className="block text-gray-700 text-base font-medium"
+              className="block text-gray-700 font-medium mb-1"
             >
-              סיסמה
+              PASSWORD
             </label>
             <input
               id="password"
               type="password"
-              className="w-full border border-gray-300 rounded-md py-2 px-3 focus:outline-none focus:border-blue-500"
+              required
+              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
+          {/* Submit Button */}
           <button
             type="submit"
-            className="bg-customGold hover:bg-customGold-600 text-white font-semibold rounded-md py-2 px-4 w-full"
+            className="w-full bg-pink-600 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-pink-700 transition-transform transform hover:scale-105 mt-5"
           >
-            הרשמה
+            REGISTER
           </button>
         </form>
-      </div>
-
-      {/* <!-- Right: Image --> */}
-      <div className="w-full lg:w-1/2 flex justify-center items-center">
-        <img
-          src={wallpaper}
-          alt="Placeholder Image"
-          className="max-w-md w-3/4 h-auto object-contain transform scale-x-[-1]"
-        />
       </div>
     </div>
   );

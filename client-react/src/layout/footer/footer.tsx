@@ -1,8 +1,8 @@
 export default function Footer() {
   return (
-    <footer className="bg-customGold text-black py-5 text-center">
-      <p className="text-lg font-medium">
-        כל הזכויות שמורות לדיג'ימון ישראל &copy; {new Date().getFullYear()}
+    <footer className="bg-gradient-to-r from-yellow-200 via-customBlue-600 to-yellow-200 py-6 text-center shadow-xl">
+      <p className="text-lg text-white opacity-80">
+        © {new Date().getFullYear()} PIKA PIKA STORE. All rights reserved.
       </p>
     </footer>
   );

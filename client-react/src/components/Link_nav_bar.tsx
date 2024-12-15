@@ -17,7 +17,7 @@ export default function Link_nav_bar({ to, innerText, img = "" }: Props) {
     textDecoration: "none",
     fontSize: "20px",
     cursor: "pointer",
-    color: "black",
+    color: "#F2A7CA",
   };
 
   const imgStyle = {

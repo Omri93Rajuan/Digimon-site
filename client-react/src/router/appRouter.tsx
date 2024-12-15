@@ -4,7 +4,7 @@ import RegisterPage from "../pages/RegisterPage";
 import PaginationExample from "../pages/Page";
 import LiveWatch from "../pages/LiveWatch";
 import SocketPage from "../pages/SocketPage";
-import StorePage from "../pages/StorePage";
+import StorePage from "../store/StorePage";
 export default function AppRouter() {
   return (
     <>

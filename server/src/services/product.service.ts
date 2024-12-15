@@ -4,7 +4,7 @@ import { IProduct } from "../types/product.interface";
 
 const getAllProducts = async () => {
   try {
-    const products = await Product.find();
+    const products = await Product.find().populate("category");
     return products;
   } catch (error: any) {
     return handleBadRequest("MongoDB", error);

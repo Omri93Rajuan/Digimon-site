@@ -1,8 +1,9 @@
+import { ICategory } from "./categoty.interface";
 export interface IProduct {
   name: string;
   description: string;
   price: number;
-  category: string;
+  category: ICategory;
   stock: number;
   images: string[];
   createdAt?: Date;
