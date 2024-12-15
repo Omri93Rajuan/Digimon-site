@@ -5,15 +5,16 @@ export default {
     extend: {
       colors: {
         customGold: {
-          DEFAULT: "#EBC55A", // צבע ברירת מחדל
-          600: "#D4A947", // גרסה כהה יותר
+          DEFAULT: "#EBC55A",
+          600: "#D4A947",
         },
         customPink: {
-          DEFAULT: "#F2A0BE", // צבע ברירת מחדל
+          DEFAULT: "#F2A0BE",
+          600: "#F24B78",
         },
         customGrenn: {
           DEFAULT: " #197352",
-          600: "#197500", // צבע ברירת מחדל
+          600: "#197500",
         },
       },
     },

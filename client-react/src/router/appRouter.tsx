@@ -1,9 +1,10 @@
 import { Route, Routes } from "react-router-dom";
-import LoginPage from "../Pages/LoginPage";
-import RegisterPage from "../Pages/RegisterPage";
-import PaginationExample from "../Pages/Page";
-import LiveWatch from "../Pages/LiveWatch";
-import SocketPage from "../Pages/SocketPage";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
+import PaginationExample from "../pages/Page";
+import LiveWatch from "../pages/LiveWatch";
+import SocketPage from "../pages/SocketPage";
+import StorePage from "../pages/StorePage";
 export default function AppRouter() {
   return (
     <>
@@ -13,7 +14,7 @@ export default function AppRouter() {
         <Route path="/page" element={<PaginationExample />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/livewatch" element={<LiveWatch />} />
-        <Route path="/io" element={<SocketPage />} />
+        <Route path="/store" element={<StorePage />} />
 
         <Route path="*" element={<h1>404 Who AM I?</h1>} />
       </Routes>

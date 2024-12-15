@@ -23,7 +23,7 @@ export default function NavBar() {
         </div>
 
         <li>
-          <Link_nav_bar to="/" innerText="Store" img={digimon3} />
+          <Link_nav_bar to="/store" innerText="Store" img={digimon3} />
         </li>
         <li>
           <Link_nav_bar to="/page" innerText="Cart" img={digimon5} />

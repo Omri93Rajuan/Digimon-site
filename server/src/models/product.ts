@@ -41,9 +41,4 @@ const ProductSchema = new Schema<IProduct>(
   }
 );
 
-ProductSchema.pre("save", function (next) {
-  this.updatedAt = new Date();
-  next();
-});
-
 export const Product = model<IProduct>("Product", ProductSchema);
