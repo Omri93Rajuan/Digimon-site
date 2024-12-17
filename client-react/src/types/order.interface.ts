@@ -1,9 +1,10 @@
-export interface IOrder extends Document {
+import { IProduct } from "./product.interface";
+
+export interface IOrder {
   user: string;
   products: {
-    product: string;
+    product: IProduct;
     quantity: number;
-    price: number;
   }[];
   totalPrice: number;
 }

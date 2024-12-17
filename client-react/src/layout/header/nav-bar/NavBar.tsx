@@ -1,7 +1,12 @@
+// src/components/NavBar.tsx
+import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../logo/Logo";
+import { useCart } from "../../../providers/CartProvider"; // ייבוא הקונטקסט של העגלה
+import Logo from "../logo/Logo"; // ייבוא הלוגו שלך
 
 export default function NavBar() {
+  const { cartCount } = useCart(); // שליפה של מספר המוצרים בעגלה
+
   return (
     <nav className="bg-gradient-to-r from-yellow-200 via-customBlue-600 to-yellow-200 border-b-4 border-yellow-500 shadow-xl">
       <div className="flex items-center justify-between px-6 py-3">
@@ -36,7 +41,12 @@ export default function NavBar() {
             to="/cart"
             className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2"
           >
-            Cart
+            Cart{" "}
+            {cartCount > 0 && (
+              <span className="ml-2 bg-red-600 text-white px-2 py-1 rounded-full">
+                {cartCount}
+              </span>
+            )}
           </Link>
         </div>
 

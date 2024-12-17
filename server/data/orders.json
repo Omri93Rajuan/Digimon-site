@@ -22,8 +22,7 @@
     "products": [
       {
         "product": "507f191e810c19729de860ea",
-        "quantity": 3,
-        "price": 15
+        "quantity": 3
       }
     ],
     "totalPrice": 45,
@@ -35,13 +34,11 @@
     "products": [
       {
         "product": "507f191e810c19729de860ea",
-        "quantity": 1,
-        "price": 20
+        "quantity": 1
       },
       {
         "product": "507f191e810c19729de860ea",
-        "quantity": 2,
-        "price": 50
+        "quantity": 2
       }
     ],
     "totalPrice": 120,

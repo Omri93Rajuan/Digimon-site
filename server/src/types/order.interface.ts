@@ -1,11 +1,10 @@
 import { ObjectId } from "mongoose";
 
 export interface IOrder extends Document {
-  user: string;
+  user: ObjectId;
   products: {
     product: string;
     quantity: number;
-    price: number;
   }[];
   totalPrice: number;
 }
