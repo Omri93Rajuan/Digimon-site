@@ -3,11 +3,33 @@ import { useCart } from "../../providers/CartProvider";
 import { useNavigate } from "react-router-dom"; // הוספת useNavigate
 
 export default function CartSummarySidebar() {
-  const { cart } = useCart();
+  const { cart, updateQuantity } = useCart(); // שימוש בפונקציה updateQuantity
   const navigate = useNavigate();
 
   const handleCheckout = () => {
     navigate("/cart");
+  };
+
+  const handleIncreaseQuantity = (productId: string) => {
+    const findProduct = cart.products.find((p) => p.product._id === productId);
+
+    if (!findProduct) return;
+
+    // קריאה לפונקציה updateQuantity שמגיעה מהקונטקסט
+    updateQuantity(productId, findProduct.quantity + 1);
+  };
+
+  const handleDecreaseQuantity = (productId: string) => {
+    const findProduct = cart.products.find((p) => p.product._id === productId);
+
+    if (!findProduct) return;
+
+    if (findProduct.quantity > 1) {
+      // קריאה לפונקציה updateQuantity שמגיעה מהקונטקסט
+      updateQuantity(productId, findProduct.quantity - 1);
+    } else {
+      console.log("Cannot decrease quantity below 1");
+    }
   };
 
   return (
@@ -28,9 +50,23 @@ export default function CartSummarySidebar() {
                   alt={item.product.name}
                   className="w-12 h-12 object-cover"
                 />
-                <div>
+                <div className="flex-1">
                   <p className="text-sm font-semibold">{item.product.name}</p>
                   <p className="text-sm text-gray-600">x{item.quantity}</p>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <button
+                    onClick={() => handleDecreaseQuantity(item.product._id!)}
+                    className="text-gray-600 text-lg font-bold hover:text-gray-900 transition duration-200"
+                  >
+                    -
+                  </button>
+                  <button
+                    onClick={() => handleIncreaseQuantity(item.product._id!)}
+                    className="text-gray-600 text-lg font-bold hover:text-gray-900 transition duration-200"
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             ))}

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate to handle 
 import useFetch from "../hooks/useFetch"; // Assuming useFetch is in hooks folder
 
 export default function CartPage() {
-  const { cart, clearCart, setCartCount } = useCart();
+  const { cart, clearCart, setCartCount, updateQuantity } = useCart(); // Use updateQuantity from context
   const { POST } = useFetch(); // Use the POST method from useFetch hook
   const navigate = useNavigate(); // Using navigate hook
 
@@ -33,6 +33,20 @@ export default function CartPage() {
       }
     } catch (error) {
       console.error("Error during checkout:", error);
+    }
+  };
+
+  const handleIncreaseQuantity = (productId: string) => {
+    const findProduct = cart.products.find((p) => p.product._id === productId);
+    if (findProduct) {
+      updateQuantity(productId, findProduct.quantity + 1); // Call updateQuantity from context
+    }
+  };
+
+  const handleDecreaseQuantity = (productId: string) => {
+    const findProduct = cart.products.find((p) => p.product._id === productId);
+    if (findProduct && findProduct.quantity > 1) {
+      updateQuantity(productId, findProduct.quantity - 1); // Call updateQuantity from context
     }
   };
 
@@ -65,9 +79,23 @@ export default function CartPage() {
                   </span>
                 </div>
                 <div className="flex items-center space-x-4">
-                  <span className="text-gray-500">
-                    Quantity: {item.quantity}
-                  </span>
+                  <div className="flex items-center space-x-2">
+                    <button
+                      onClick={() => handleDecreaseQuantity(item.product._id!)}
+                      className="text-gray-600 text-lg font-bold hover:text-gray-900 transition duration-200"
+                    >
+                      -
+                    </button>
+                    <span className="text-gray-500">
+                      Quantity: {item.quantity}
+                    </span>
+                    <button
+                      onClick={() => handleIncreaseQuantity(item.product._id!)}
+                      className="text-gray-600 text-lg font-bold hover:text-gray-900 transition duration-200"
+                    >
+                      +
+                    </button>
+                  </div>
                   <span className="text-xl font-semibold text-gray-900">
                     ${(item.product.price * item.quantity).toFixed(2)}
                   </span>

@@ -8,9 +8,12 @@ interface CartContextType {
   clearCart: () => void;
   setCartCount: (number: number) => void;
   cartCount: number;
+  updateQuantity: (id: string, quantity: number) => void; // פונקציה לעדכון הכמות
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined);
+export const CartContext = createContext<CartContextType | undefined>(
+  undefined
+);
 
 export const useCart = () => {
   const context = useContext(CartContext);
@@ -35,6 +38,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       setCart(JSON.parse(storedCart));
     }
   }, []);
+
   const addToCart = (product: IProduct) => {
     setCart((prevCart) => {
       const existingProductIndex = prevCart.products.findIndex(
@@ -68,6 +72,25 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart({ products: [] });
   };
 
+  // פונקציה לעדכון כמות המוצר
+  const updateQuantity = (id: string, quantity: number) => {
+    setCart((prevCart) => {
+      const updatedProducts = prevCart.products.map((item) => {
+        if (item.product._id === id) {
+          return { ...item, quantity }; // עדכון כמות המוצר
+        }
+        return item;
+      });
+
+      // עדכון cartCount בהתאם לכמות החדשה
+      setCartCount(
+        updatedProducts.reduce((acc, item) => acc + item.quantity, 0)
+      );
+
+      return { products: updatedProducts };
+    });
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -77,6 +100,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         clearCart,
         setCartCount,
         cartCount,
+        updateQuantity, // הוספתי את הפונקציה
       }}
     >
       {children}
