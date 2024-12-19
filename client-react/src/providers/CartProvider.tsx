@@ -72,7 +72,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     setCart({ products: [] });
   };
 
-  // פונקציה לעדכון כמות המוצר
   const updateQuantity = (id: string, quantity: number) => {
     setCart((prevCart) => {
       const updatedProducts = prevCart.products.map((item) => {
@@ -82,7 +81,6 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         return item;
       });
 
-      // עדכון cartCount בהתאם לכמות החדשה
       setCartCount(
         updatedProducts.reduce((acc, item) => acc + item.quantity, 0)
       );
@@ -100,7 +98,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         clearCart,
         setCartCount,
         cartCount,
-        updateQuantity, // הוספתי את הפונקציה
+        updateQuantity,
       }}
     >
       {children}

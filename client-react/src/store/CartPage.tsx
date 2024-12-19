@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate to handle 
 import useFetch from "../hooks/useFetch"; // Assuming useFetch is in hooks folder
 
 export default function CartPage() {
-  const { cart, clearCart, setCartCount, updateQuantity } = useCart(); // Use updateQuantity from context
-  const { POST } = useFetch(); // Use the POST method from useFetch hook
-  const navigate = useNavigate(); // Using navigate hook
+  const { cart, clearCart, setCartCount, updateQuantity, removeFromCart } =
+    useCart(); // Use removeFromCart from context
+  const { POST } = useFetch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setCartCount(0);
-  }, [setCartCount]); // Added proper dependency array
+  }, []);
 
   const handleCheckout = async () => {
     try {
@@ -50,6 +51,10 @@ export default function CartPage() {
     }
   };
 
+  const handleRemoveProduct = (productId: string) => {
+    removeFromCart(productId); // Call removeFromCart from context
+  };
+
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">
@@ -68,12 +73,31 @@ export default function CartPage() {
                 key={item.product._id}
                 className="flex justify-between items-center border-b pb-4"
               >
-                <div className="flex items-center space-x-4">
-                  <img
-                    src={item.product.images[0]} // Assuming product image URL
-                    alt={item.product.name}
-                    className="w-16 h-16 object-cover rounded-md"
-                  />
+                <div className="relative flex items-center space-x-4">
+                  <div className="relative">
+                    <img
+                      src={item.product.images[0]} // Assuming product image URL
+                      alt={item.product.name}
+                      className="w-16 h-16 object-cover rounded-md"
+                    />
+                    {/* Remove button with X */}
+                    <button
+                      onClick={() => handleRemoveProduct(item.product._id!)}
+                      className="absolute top-0 right-0 text-red-600 text-lg font-bold hover:text-red-900 transition duration-200"
+                      style={{
+                        background: "rgba(255, 255, 255, 0.7)", // Slight white background to make the X stand out
+                        borderRadius: "50%",
+                        width: "20px", // Size of the X
+                        height: "20px", // Size of the X
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        fontSize: "14px", // Font size of the X
+                      }}
+                    >
+                      X
+                    </button>
+                  </div>
                   <span className="text-lg font-semibold text-gray-700">
                     {item.product.name}
                   </span>

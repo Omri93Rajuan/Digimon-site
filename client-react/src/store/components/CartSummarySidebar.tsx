@@ -3,7 +3,7 @@ import { useCart } from "../../providers/CartProvider";
 import { useNavigate } from "react-router-dom"; // הוספת useNavigate
 
 export default function CartSummarySidebar() {
-  const { cart, updateQuantity } = useCart(); // שימוש בפונקציה updateQuantity
+  const { cart, updateQuantity, removeFromCart } = useCart(); // שימוש בפונקציה removeFromCart
   const navigate = useNavigate();
 
   const handleCheckout = () => {
@@ -32,6 +32,11 @@ export default function CartSummarySidebar() {
     }
   };
 
+  const handleRemoveProduct = (productId: string) => {
+    // קריאה לפונקציה removeFromCart שמגיעה מהקונטקסט
+    removeFromCart(productId);
+  };
+
   return (
     <>
       {cart.products.length > 0 && (
@@ -41,15 +46,34 @@ export default function CartSummarySidebar() {
             {cart.products.map((item) => (
               <div
                 key={item.product._id}
-                className="flex items-center space-x-4"
+                className="relative flex items-center space-x-4"
               >
-                <img
-                  src={
-                    item.product.images[0] || "https://via.placeholder.com/50"
-                  }
-                  alt={item.product.name}
-                  className="w-12 h-12 object-cover"
-                />
+                <div className="relative">
+                  <img
+                    src={
+                      item.product.images[0] || "https://via.placeholder.com/50"
+                    }
+                    alt={item.product.name}
+                    className="w-12 h-12 object-cover"
+                  />
+                  {/* כפתור X להסרת המוצר */}
+                  <button
+                    onClick={() => handleRemoveProduct(item.product._id!)}
+                    className="absolute top-0 right-0 text-red-600 text-lg font-bold hover:text-red-900 transition duration-200"
+                    style={{
+                      background: "rgba(255, 255, 255, 0.7)",
+                      borderRadius: "50%",
+                      width: "20px", // גודל ה-X
+                      height: "20px", // גודל ה-X
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                      fontSize: "14px", // גודל טקסט ה-X
+                    }}
+                  >
+                    X
+                  </button>
+                </div>
                 <div className="flex-1">
                   <p className="text-sm font-semibold">{item.product.name}</p>
                   <p className="text-sm text-gray-600">x{item.quantity}</p>
