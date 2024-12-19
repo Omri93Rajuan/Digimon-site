@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
-import wallpaper from "../assets/14.png";
+import wallpaper from "../assets/14.png"; // התמונה שלך
 import { useNavigate } from "react-router-dom";
 
 export default function RegisterPage() {
@@ -12,16 +12,28 @@ export default function RegisterPage() {
   const { POST } = useFetch();
   const navigate = useNavigate();
 
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     const newUser = { fullName, email, password, phone, isAdmin };
-    const successfullyAddedUser = await POST("users", newUser);
-    if (successfullyAddedUser) navigate("/login");
+    setLoading(true); // Start loading state
+    try {
+      const successfullyAddedUser = await POST("users", newUser);
+      if (successfullyAddedUser) {
+        navigate("/login"); // Navigate to login page after successful registration
+      }
+    } catch (error: any) {
+      setError(error?.message || "Registration failed. Please try again.");
+    } finally {
+      setLoading(false); // Stop loading state
+    }
   };
 
   return (
-    <div className=" flex min-h-screen justify-center items-center">
+    <div className="flex min-h-screen justify-center items-center">
       {/* Image Section */}
       <div className="w-full lg:w-1/2 flex justify-center items-center mt-6 lg:mt-0">
         <img
@@ -89,10 +101,21 @@ export default function RegisterPage() {
           <button
             type="submit"
             className="w-full bg-pink-600 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-pink-700 transition-transform transform hover:scale-105 mt-5"
+            disabled={loading} // Disable button when loading
           >
-            REGISTER
+            {loading ? "Registering..." : "REGISTER"}
           </button>
         </form>
+
+        {/* Error Message */}
+        {error && (
+          <div className="error-message bg-red-600 text-white p-4 rounded-md mt-4">
+            <h1>{error}</h1>
+            <button onClick={() => setError(null)} className="ml-4 text-xl">
+              Dismiss
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

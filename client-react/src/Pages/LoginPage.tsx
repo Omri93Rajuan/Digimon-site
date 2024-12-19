@@ -2,18 +2,29 @@ import React, { useState } from "react";
 import useFetch from "../hooks/useFetch";
 import wallpaper from "../assets/15.png"; // התמונה שלך
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const { POST } = useFetch();
   const navigate = useNavigate();
+  const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const { login } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const UserLogin = { email, password };
-    await POST("auth/login", UserLogin);
-    navigate("/");
+    setLoading(true);
+    try {
+      await login(UserLogin);
+      navigate("/");
+    } catch (error: any) {
+      setError(error?.message || "Login failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -23,17 +34,17 @@ export default function LoginPage() {
           LOGIN
         </h1>
         <form onSubmit={handleSubmit} className="space-y-5 w-full">
-          {/* Username */}
+          {/* Email */}
           <div>
             <label
-              htmlFor="username"
+              htmlFor="email"
               className="block text-gray-700 font-medium mb-1"
             >
-              USERNAME
+              EMAIL
             </label>
             <input
-              id="username"
-              type="text"
+              id="email"
+              type="email"
               required
               className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-600"
               onChange={(e) => setEmail(e.target.value)}
@@ -69,13 +80,25 @@ export default function LoginPage() {
               Remember Me
             </label>
           </div>
+          {/* Submit Button */}
           <button
             type="submit"
             className="w-full bg-yellow-500 text-white font-semibold py-2 rounded-lg shadow-md hover:bg-yellow-400 transition-transform transform hover:scale-105 mt-5"
+            disabled={loading} // Disable button when loading
           >
-            LOGIN
+            {loading ? "Logging in..." : "LOGIN"}
           </button>
         </form>
+
+        {/* Error Message */}
+        {error && (
+          <div className="error-message bg-red-600 text-white p-4 rounded-md mt-4">
+            <h1>{error}</h1>
+            <button onClick={() => setError(null)} className="ml-4 text-xl">
+              X
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Image Section */}

@@ -32,10 +32,14 @@ export default function useFetch<T>(): any {
         credentials: "include",
         body: JSON.stringify(body),
       });
+
+      // אם התגובה לא בסדר (status code != 2xx)
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error?.message || "Request failed");
+        // ניסוי לקרוא לגוף התגובה רק אם הוא קיים
+        const errorData = await response.text();
+        throw new Error(errorData || "Request failed");
       }
+
       const result = await response.json();
       setData(result);
       return result;
