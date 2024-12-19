@@ -1,8 +1,14 @@
 import React from "react";
 import { useCart } from "../../providers/CartProvider";
+import { useNavigate } from "react-router-dom"; // הוספת useNavigate
 
 export default function CartSummarySidebar() {
   const { cart } = useCart();
+  const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate("/cart");
+  };
 
   return (
     <>
@@ -29,7 +35,7 @@ export default function CartSummarySidebar() {
               </div>
             ))}
           </div>
-          <div className="text-xl font-semibold text-gray-900">
+          <div className="text-xl font-semibold text-gray-900 mb-4">
             Total: $
             {cart.products
               .reduce(
@@ -38,6 +44,14 @@ export default function CartSummarySidebar() {
               )
               .toFixed(2)}
           </div>
+
+          {/* כפתור לתשלום */}
+          <button
+            onClick={handleCheckout} // קריאה לפונקציה כשנלחץ
+            className="w-full bg-blue-500 text-white text-lg font-bold py-2 rounded-full hover:bg-blue-400 transition duration-300"
+          >
+            Checkout
+          </button>
         </div>
       )}
     </>

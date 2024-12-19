@@ -1,13 +1,40 @@
 import React, { useEffect } from "react";
 import { useCart } from "../providers/CartProvider"; // Importing your context
+import { useNavigate } from "react-router-dom"; // Import useNavigate to handle navigation
+import useFetch from "../hooks/useFetch"; // Assuming useFetch is in hooks folder
 
 export default function CartPage() {
   const { cart, clearCart, setCartCount } = useCart();
+  const { POST } = useFetch(); // Use the POST method from useFetch hook
+  const navigate = useNavigate(); // Using navigate hook
 
   useEffect(() => {
     setCartCount(0);
-  }),
-    [];
+  }, [setCartCount]); // Added proper dependency array
+
+  const handleCheckout = async () => {
+    try {
+      const orderDetails = {
+        products: cart.products.map((item) => ({
+          productId: item.product._id,
+          quantity: item.quantity,
+          price: item.product.price,
+        })),
+        total: cart.products
+          .reduce((acc, item) => acc + item.product.price * item.quantity, 0)
+          .toFixed(2),
+      };
+
+      // Send the order details to the server
+      const order = await POST("orders", orderDetails);
+      if (order) {
+        // Navigate to the checkout page after successful order submission
+        navigate("/checkout");
+      }
+    } catch (error) {
+      console.error("Error during checkout:", error);
+    }
+  };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-6">
@@ -64,6 +91,16 @@ export default function CartPage() {
                 )
                 .toFixed(2)}
             </div>
+          </div>
+
+          {/* Checkout Button */}
+          <div className="mt-4">
+            <button
+              onClick={handleCheckout} // Navigate to the checkout page
+              className="w-full bg-blue-500 text-white text-lg font-bold py-2 rounded-full hover:bg-blue-400 transition duration-300"
+            >
+              Proceed to Checkout
+            </button>
           </div>
         </div>
       )}

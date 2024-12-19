@@ -1,7 +1,7 @@
 // src/components/NavBar.tsx
 import React from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "../../../providers/CartProvider"; // ייבוא הקונטקסט של העגלה
+import { useCart } from "../../../providers/CartProvider";
 import Logo from "../logo/Logo"; // ייבוא הלוגו שלך
 
 export default function NavBar() {
@@ -37,17 +37,19 @@ export default function NavBar() {
           >
             Store
           </Link>
-          <Link
-            to="/cart"
-            className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2"
-          >
-            Cart{" "}
+          <div className="relative flex items-center">
+            <Link
+              to="/cart"
+              className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2 flex items-center"
+            >
+              Cart
+            </Link>
             {cartCount > 0 && (
-              <span className="ml-2 bg-red-600 text-white px-2 py-1 rounded-full">
+              <span className="absolute bottom-4 right-0 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full transform translate-x-3 translate-y-[-12px]">
                 {cartCount}
               </span>
             )}
-          </Link>
+          </div>
         </div>
 
         {/* כפתורים מימין */}

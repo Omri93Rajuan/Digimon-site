@@ -1,5 +1,6 @@
 import React from "react";
 import { IProduct } from "../types/product.interface";
+import { useCart } from "../providers/CartProvider"; // ייבוא הקונטקסט של העגלה
 
 interface ProductModalProps {
   product: IProduct;
@@ -7,6 +8,8 @@ interface ProductModalProps {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
+  const { addToCart } = useCart(); // שליפה של הפונקציה להוספה לעגלה
+
   // פונקציה לחשב את הזמן בצורה יותר טבעית
   const formatDate = (date: Date | undefined) => {
     if (!date) return "N/A";
@@ -42,6 +45,11 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
     };
 
     return new Date(date).toLocaleString("en-US", options); // מציג תאריך עם שעה במידה ויותר משבוע
+  };
+
+  // פונקציה להוספת המוצר לעגלה
+  const handleAddToCart = () => {
+    addToCart(product); // הוספה לעגלה
   };
 
   return (
@@ -98,8 +106,13 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
         </div>
 
         {/* כפתור להוספה לעגלה */}
-        <button className="bg-pink-500 text-white w-full py-2 rounded hover:bg-pink-600 transition">
-          Add to Cart
+
+        <button
+          onClick={handleAddToCart}
+          disabled={product.stock === 0} // כפתור לא פעיל אם המלאי נגמר
+          className="mt-4 w-full bg-yellow-500 text-gray-800 text-lg font-bold py-2 rounded-full border-2 border-yellow-600 shadow-md hover:bg-yellow-400 hover:border-yellow-500 hover:scale-105 transition-transform"
+        >
+          {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
         </button>
       </div>
     </div>

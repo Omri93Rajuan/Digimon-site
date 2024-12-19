@@ -14,14 +14,14 @@ const router: IRouter = express.Router();
 router.use("/users", usersContoller);
 router.use("/product", productController);
 router.use("/categorty", categortyController);
-router.use("/order", orderController);
+router.use("/orders", orderController);
 router.use("/auth", authController);
 
 // Admin-only routes
 router.use("/admin-role/users", verifyAdmin, usersContoller);
 router.use("/admin-role/product", verifyAdmin, productController);
 router.use("/admin-role/categorty", verifyAdmin, categortyController);
-router.use("/admin-role/order", verifyAdmin, orderController);
+router.use("/admin-role/orders", verifyAdmin, orderController);
 
 router.use((req: Request, res: Response, next: NextFunction) => {
   next(handleError(res, 404, "The requested resource was not found."));

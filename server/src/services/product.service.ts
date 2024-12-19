@@ -1,6 +1,7 @@
 import { handleBadRequest } from "../utils/ErrorHandle";
 import { Product } from "../models/product";
 import { IProduct } from "../types/product.interface";
+import { Model } from "mongoose";
 
 const getAllProducts = async () => {
   try {
@@ -11,9 +12,9 @@ const getAllProducts = async () => {
   }
 };
 
-const getProductById = async (productId: string) => {
+const getProductById = async (model: typeof Model, productId: string) => {
   try {
-    const product = await Product.findById(productId);
+    const product = await model.findById(productId);
     if (!product) {
       throw new Error("Product not found");
     }
