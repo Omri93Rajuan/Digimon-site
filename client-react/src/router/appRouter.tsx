@@ -8,13 +8,15 @@ import StorePage from "../store/StorePage";
 import CartPage from "../store/CartPage";
 import { IProduct } from "../types/product.interface";
 import { useState } from "react";
+import HomePage from "../pages/HomePage";
 export default function AppRouter() {
   const [cart, setCart] = useState<IProduct[]>([]);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<h1>404 Who AM I?</h1>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/home" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/page" element={<PaginationExample />} />
         <Route path="/register" element={<RegisterPage />} />
