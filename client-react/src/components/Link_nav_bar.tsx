@@ -4,35 +4,12 @@ import { NavLink } from "react-router-dom";
 interface Props {
   to: string;
   innerText: string;
-  img: string;
 }
 
-export default function Link_nav_bar({ to, innerText, img = "" }: Props) {
-  const navItemContainerStyle = {
-    display: "flex",
-    alignItems: "center",
-  };
-
-  const linkStyle = {
-    textDecoration: "none",
-    fontSize: "20px",
-    cursor: "pointer",
-    color: "#F2A7CA",
-  };
-
-  const imgStyle = {
-    width: "70px",
-  };
-
+export default function Link_nav_bar({ to, innerText }: Props) {
   return (
-    <div
-      className="nav-item-container rubik-doodle-regular"
-      style={navItemContainerStyle}
-    >
-      <img src={img} alt={"this is a " + img + " picture"} style={imgStyle} />
-      <NavLink to={to} style={linkStyle}>
-        {innerText}
-      </NavLink>
+    <div className="text-xl font-medium hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2">
+      <NavLink to={to}>{innerText}</NavLink>
     </div>
   );
 }

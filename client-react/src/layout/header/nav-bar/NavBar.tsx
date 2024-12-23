@@ -2,82 +2,57 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../../../providers/CartProvider";
-import { useAuth } from "../../../hooks/useAuth"; // Import the custom useAuth hook
-import Logo from "../logo/Logo"; // Import the Logo component
+import { useAuth } from "../../../hooks/useAuth";
+import Logo from "../logo/Logo";
+import Link_nav_bar from "../../../components/Link_nav_bar";
 
 export default function NavBar() {
-  const { cartCount } = useCart(); // Fetch the number of items in the cart
-  const { user, logout } = useAuth(); // Use the custom useAuth hook to manage auth and access logout function
+  const { cartCount } = useCart();
+  const { user, logout } = useAuth();
+
   useEffect(() => {
-    console.log(user); // לבדוק אם ה-user מתעדכן אחרי התחברות
+    console.log(user);
   }, [user]);
 
   return (
-    <nav className="bg-gradient-to-r from-yellow-200 via-customBlue-600 to-yellow-200 border-b-4 border-yellow-500 shadow-xl">
+    <nav className="bg-gray-100 border-b border-gray-300 shadow-sm">
       <div className="flex items-center justify-between px-6 py-3">
-        {/* Logo on the left */}
-        <div className="flex-shrink-0 scale-110 hover:scale-125 transition-all duration-300 transform hover:rotate-12">
+        <div className="flex-shrink-0">
           <Link to="/">
             <Logo />
           </Link>
         </div>
-
-        {/* Navigation links in the center */}
-        <div className="flex gap-8 items-center text-xl font-semibold text-white drop-shadow-md">
-          <Link
-            to="/"
-            className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2"
-          >
-            Home
-          </Link>
-          <Link
-            to="/about"
-            className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2"
-          >
-            About
-          </Link>
-          <Link
-            to="/store"
-            className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2"
-          >
-            Store
-          </Link>
-          <div className="relative flex items-center">
-            <Link
-              to="/cart"
-              className="hover:text-yellow-400 transition-all duration-300 transform hover:scale-110 hover:translate-x-2 flex items-center"
-            >
-              Cart
-            </Link>
-            {cartCount > 0 && (
-              <span className="absolute bottom-4 right-0 bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full transform translate-x-3 translate-y-[-12px]">
-                {cartCount}
-              </span>
-            )}
-          </div>
+        <div className="flex-1 flex justify-center space-x-8">
+          <Link_nav_bar to="/home" innerText="Home" />
+          <Link_nav_bar to="/about" innerText="About" />
+          <Link_nav_bar to="/store" innerText="Store" />
+          <Link_nav_bar to="/cart" innerText="Cart" />
         </div>
-
-        {/* Right-side buttons */}
-        <div className="flex gap-6">
+        <div className="relative flex items-center gap-4">
+          {cartCount > 0 && (
+            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+              {cartCount}
+            </span>
+          )}
           {!user ? (
             <>
               <Link
                 to="/login"
-                className="bg-yellow-500 text-gray-800 px-5 py-2 rounded-full text-md font-semibold hover:bg-yellow-400 hover:scale-105 transition-all duration-300 transform hover:rotate-3"
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition duration-200"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="bg-pink-600 text-white px-5 py-2 rounded-full text-md font-semibold hover:bg-pink-500 hover:scale-105 transition-all duration-300 transform hover:rotate-3"
+                className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition duration-200"
               >
                 Register
               </Link>
             </>
           ) : (
             <button
-              onClick={() => logout()} // Now the logout function is available here
-              className="bg-red-600 text-white px-5 py-2 rounded-full text-md font-semibold hover:bg-red-500 hover:scale-105 transition-all duration-300 transform hover:rotate-3"
+              onClick={logout}
+              className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-200"
             >
               Logout
             </button>
