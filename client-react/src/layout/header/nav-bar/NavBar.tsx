@@ -26,14 +26,16 @@ export default function NavBar() {
           <Link_nav_bar to="/home" innerText="Home" />
           <Link_nav_bar to="/about" innerText="About" />
           <Link_nav_bar to="/store" innerText="Store" />
-          <Link_nav_bar to="/cart" innerText="Cart" />
+          <div className="relative">
+            <Link_nav_bar to="/cart" innerText="Cart" />
+            {cartCount > 0 && (
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 mb-2 bg-red-600 text-white text-sm font-semibold rounded-full w-6 h-6 flex items-center justify-center">
+                {cartCount}
+              </div>
+            )}
+          </div>
         </div>
         <div className="relative flex items-center gap-4">
-          {cartCount > 0 && (
-            <span className="absolute top-0 right-0 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-              {cartCount}
-            </span>
-          )}
           {!user ? (
             <>
               <Link

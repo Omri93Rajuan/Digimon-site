@@ -13,7 +13,7 @@ export default {
           600: "#F24B78",
         },
         customPink: {
-          DEFAULT: "#F2A7CA",
+          DEFAULT: "#F24B78",
           600: "#103D38",
         },
       },

@@ -1,15 +1,11 @@
 import React from "react";
 
-interface Props {
-  title: string;
-  subtitle: string;
-}
-
-export default function PageHeader(props: Props) {
+export default function PageHeader({ title }: { title: string }) {
   return (
-    <div className="page-header">
-      <h1 className="page-header__title">{props.title}</h1>
-      <h2 className="page-header__subtitle">{props.subtitle}</h2>
-    </div>
+    <>
+      <h1 className="text-4xl font-bold text-center mb-8 text-customBlue-600 drop-shadow-lg">
+        {title}{" "}
+      </h1>
+    </>
   );
 }

@@ -8,9 +8,8 @@ interface ProductModalProps {
 }
 
 const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
-  const { addToCart } = useCart(); // שליפה של הפונקציה להוספה לעגלה
+  const { addToCart } = useCart();
 
-  // פונקציה לחשב את הזמן בצורה יותר טבעית
   const formatDate = (date: Date | undefined) => {
     if (!date) return "N/A";
 
@@ -108,9 +107,9 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
         {/* כפתור להוספה לעגלה */}
 
         <button
-          onClick={handleAddToCart}
+          onClick={() => handleAddToCart()}
           disabled={product.stock === 0} // כפתור לא פעיל אם המלאי נגמר
-          className="mt-4 w-full bg-yellow-500 text-gray-800 text-lg font-bold py-2 rounded-full border-2 border-yellow-600 shadow-md hover:bg-yellow-400 hover:border-yellow-500 hover:scale-105 transition-transform"
+          className="mt-2 w-full bg-customBlue-600 text-white font-semibold py-1 px-2 rounded-lg hover:bg-customPink-600 transition duration-200 "
         >
           {product.stock > 0 ? "Add to Cart" : "Out of Stock"}
         </button>

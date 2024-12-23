@@ -8,7 +8,7 @@ interface CartContextType {
   clearCart: () => void;
   setCartCount: (number: number) => void;
   cartCount: number;
-  updateQuantity: (id: string, quantity: number) => void; // פונקציה לעדכון הכמות
+  updateQuantity: (id: string, quantity: number) => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -26,16 +26,20 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   const [cart, setCart] = useState<{
     products: { product: IProduct; quantity: number }[];
-  }>({
-    products: [],
-  });
+  }>({ products: [] });
   const [cartCount, setCartCount] = useState(0);
 
-  // קריאה ל-`localStorage` בשעת הטעינה
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
     if (storedCart) {
-      setCart(JSON.parse(storedCart));
+      const parsedCart = JSON.parse(storedCart);
+      setCart(parsedCart);
+      setCartCount(
+        parsedCart.products.reduce(
+          (acc: number, item: any) => acc + item.quantity,
+          0
+        )
+      );
     }
   }, []);
 
@@ -44,47 +48,42 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
       const existingProductIndex = prevCart.products.findIndex(
         (item) => item.product._id === product._id
       );
-
       if (existingProductIndex !== -1) {
         const updatedProducts = [...prevCart.products];
         updatedProducts[existingProductIndex].quantity += 1;
-
-        // עדכון cartCount בצורה נכונה
         setCartCount((prevCount) => prevCount + 1);
-
         return { products: updatedProducts };
       }
-
-      // אם המוצר לא קיים, נוסיף אותו
       setCartCount((prevCount) => prevCount + 1);
-
       return { products: [...prevCart.products, { product, quantity: 1 }] };
     });
   };
 
   const removeFromCart = (id: string) => {
-    setCart((prevCart) => ({
-      products: prevCart.products.filter((item) => item.product._id !== id),
-    }));
+    setCart((prevCart) => {
+      const updatedProducts = prevCart.products.filter(
+        (item) => item.product._id !== id
+      );
+      setCartCount(
+        updatedProducts.reduce((acc, item) => acc + item.quantity, 0)
+      );
+      return { products: updatedProducts };
+    });
   };
 
   const clearCart = () => {
     setCart({ products: [] });
+    setCartCount(0);
   };
 
   const updateQuantity = (id: string, quantity: number) => {
     setCart((prevCart) => {
-      const updatedProducts = prevCart.products.map((item) => {
-        if (item.product._id === id) {
-          return { ...item, quantity }; // עדכון כמות המוצר
-        }
-        return item;
-      });
-
+      const updatedProducts = prevCart.products.map((item) =>
+        item.product._id === id ? { ...item, quantity } : item
+      );
       setCartCount(
         updatedProducts.reduce((acc, item) => acc + item.quantity, 0)
       );
-
       return { products: updatedProducts };
     });
   };
