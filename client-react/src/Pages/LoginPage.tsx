@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import useFetch from "../hooks/useFetch";
 import wallpaper from "../assets/15.png"; // התמונה שלך
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
@@ -7,7 +6,6 @@ import { useAuth } from "../hooks/useAuth";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { POST } = useFetch();
   const navigate = useNavigate();
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
@@ -18,17 +16,20 @@ export default function LoginPage() {
     const UserLogin = { email, password };
     setLoading(true);
     try {
-      await login(UserLogin);
+      const isLogin = await login(UserLogin);
+      if (!isLogin) throw new Error("Incorrect password or Email");
       navigate("/");
     } catch (error: any) {
       setError(error?.message || "Login failed. Please try again.");
+      // Set a timeout to clear the error after 3 seconds
+      setTimeout(() => setError(null), 3000);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="flex min-h-screen justify-center items-center">
+    <div className="flex min-h-screen justify-center items-center bg-gray-100">
       <div className="bg-white bg-opacity-80 p-8 rounded-3xl shadow-lg w-full max-w-lg flex flex-col items-center">
         <h1 className="text-4xl font-bold text-center text-customBlue-600 mb-6">
           LOGIN
@@ -92,11 +93,13 @@ export default function LoginPage() {
 
         {/* Error Message */}
         {error && (
-          <div className="error-message bg-red-600 text-white p-4 rounded-md mt-4">
-            <h1>{error}</h1>
-            <button onClick={() => setError(null)} className="ml-4 text-xl">
-              X
-            </button>
+          <div className="mt-4 w-full">
+            <div className="p-4 text-red-700 bg-red-100 border border-red-400 rounded-md flex justify-between items-center">
+              <span>{error}</span>
+              <button onClick={() => setError(null)} className="text-red-700">
+                &#10005;
+              </button>
+            </div>
           </div>
         )}
       </div>
