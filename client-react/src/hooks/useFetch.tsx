@@ -50,10 +50,10 @@ export default function useFetch<T>(): any {
   };
 
   // ----------PUT method (Update)----------
-  const PUT = async (endpoint: string, body: object) => {
+  const PATCH = async (endpoint: string, body: object) => {
     try {
       const response = await fetch(`${BASE_URL}${endpoint}`, {
-        method: "PUT",
+        method: "PATCH",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify(body),
@@ -111,5 +111,5 @@ export default function useFetch<T>(): any {
     }
   };
 
-  return { data, error, GET, POST, PUT, DELETE, GetByCall };
+  return { data, error, GET, POST, PATCH, DELETE, GetByCall };
 }

@@ -26,5 +26,4 @@ router.use("/admin-role/orders", verifyAdmin, orderController);
 router.use((req: Request, res: Response, next: NextFunction) => {
   next(handleError(res, 404, "The requested resource was not found."));
 });
-
 export default router;
