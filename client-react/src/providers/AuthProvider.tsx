@@ -35,7 +35,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       setUser(userData.foundUser);
       return true;
     } catch (error) {
-      setError("Login failed. Please try again.");
+      setError("Login failed. Please try again to connect.");
       return false;
     }
   };
