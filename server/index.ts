@@ -8,6 +8,7 @@ import "dotenv/config";
 import router from "./src/router/router";
 import loadInitialData from "./src/seed/initailData";
 import chalk from "chalk";
+import connectToDb from "./src/db/dbService";
 
 import mainSocket from "./src/sockets/mainSocket";
 
@@ -31,20 +32,11 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(router);
 
-// MongoDB Connection
-mongoose
-  .connect(process.env.MONGO_URI || "")
-  .then(() => {
-    console.log(chalk.cyanBright("Connected to MongoDB Atlas"));
-  })
-  .catch((error) => {
-    console.error(chalk.red("Error connecting to MongoDB:", error));
-  });
-
 mainSocket(io);
 
 server.listen(process.env.PORT || 8000, () => {
   console.log(
     chalk.blue(`Listening on: http://localhost:${process.env.PORT || 8000}`)
   );
+  connectToDb();
 });
